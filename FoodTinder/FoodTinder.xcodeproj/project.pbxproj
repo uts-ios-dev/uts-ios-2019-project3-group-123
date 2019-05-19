@@ -14,6 +14,10 @@
 		FAE7475A228BEA7400324BF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAE74759228BEA7400324BF0 /* Assets.xcassets */; };
 		FAE7475D228BEA7400324BF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE7475B228BEA7400324BF0 /* LaunchScreen.storyboard */; };
 		FAFFC0C52290365A0065091A /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFFC0C42290365A0065091A /* ExploreViewController.swift */; };
+		FAFFC0C72291113E0065091A /* SwipableCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFFC0C62291113E0065091A /* SwipableCard.swift */; };
+		FAFFC0C9229111550065091A /* SwipableCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFFC0C8229111550065091A /* SwipableCard.xib */; };
+		FAFFC0CB2291510F0065091A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFFC0CA2291510F0065091A /* Extensions.swift */; };
+		FAFFC0CD229174620065091A /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFFC0CC229174620065091A /* Recipe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		FAE7475C228BEA7400324BF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAE7475E228BEA7400324BF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAFFC0C42290365A0065091A /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		FAFFC0C62291113E0065091A /* SwipableCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipableCard.swift; sourceTree = "<group>"; };
+		FAFFC0C8229111550065091A /* SwipableCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwipableCard.xib; sourceTree = "<group>"; };
+		FAFFC0CA2291510F0065091A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FAFFC0CC229174620065091A /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +74,10 @@
 				FAE7475E228BEA7400324BF0 /* Info.plist */,
 				FAE74756228BEA6D00324BF0 /* FoodTinder.xcdatamodeld */,
 				FAFFC0C42290365A0065091A /* ExploreViewController.swift */,
+				FAFFC0C62291113E0065091A /* SwipableCard.swift */,
+				FAFFC0C8229111550065091A /* SwipableCard.xib */,
+				FAFFC0CA2291510F0065091A /* Extensions.swift */,
+				FAFFC0CC229174620065091A /* Recipe.swift */,
 			);
 			path = FoodTinder;
 			sourceTree = "<group>";
@@ -130,6 +142,7 @@
 			files = (
 				FAE7475D228BEA7400324BF0 /* LaunchScreen.storyboard in Resources */,
 				FAE7475A228BEA7400324BF0 /* Assets.xcassets in Resources */,
+				FAFFC0C9229111550065091A /* SwipableCard.xib in Resources */,
 				FAE74755228BEA6D00324BF0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,6 +154,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAFFC0C72291113E0065091A /* SwipableCard.swift in Sources */,
+				FAFFC0CB2291510F0065091A /* Extensions.swift in Sources */,
+				FAFFC0CD229174620065091A /* Recipe.swift in Sources */,
 				FAFFC0C52290365A0065091A /* ExploreViewController.swift in Sources */,
 				FAE74752228BEA6D00324BF0 /* ViewController.swift in Sources */,
 				FAE74758228BEA6D00324BF0 /* FoodTinder.xcdatamodeld in Sources */,
