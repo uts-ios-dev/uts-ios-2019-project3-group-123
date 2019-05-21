@@ -34,6 +34,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="620" y="21"/>
         </scene>
         <!--Explore View Controller-->
         <scene sceneID="XLV-VI-koh">
@@ -68,6 +69,7 @@
                                 <state key="normal" title="Right"/>
                                 <connections>
                                     <action selector="swipeRight:" destination="XfT-Kq-kCk" eventType="touchUpInside" id="Zzo-Cv-sDp"/>
+                                    <segue destination="XuP-b2-evY" kind="show" identifier="toIngredientsScreen" id="zNF-7R-J2y"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -77,7 +79,69 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jhd-Nn-r0w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1371.0144927536232" y="20.758928571428569"/>
+            <point key="canvasLocation" x="1591" y="21"/>
+        </scene>
+        <!--Ingredients View Controller-->
+        <scene sceneID="3TV-Ib-rHT">
+            <objects>
+                <viewController id="XuP-b2-evY" customClass="IngredientsViewController" customModule="FoodTinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eaW-M4-oVV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ngm-Ng-hjg">
+                                <rect key="frame" x="26" y="44" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="back" destination="XuP-b2-evY" eventType="touchUpInside" id="4qy-hc-0zN"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4pI-gQ-Zsx">
+                                <rect key="frame" x="0.0" y="82" width="414" height="377"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ingredients:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esn-dV-0oG">
+                                <rect key="frame" x="162" y="562" width="91" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="E9b-EF-PBZ">
+                                <rect key="frame" x="27" y="589" width="361" height="166"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">1/2 recipe homemade pizza dough
+1 Tablespoon olive oil
+2 cloves roasted garlic, finely chopped
+1/4 cup your favorite pizza or tomato sauce
+8 ounces mozzarella cheese, sliced into 1/2 inch thick pieces
+2 plum tomatoes, sliced (or any tomato you like)
+handful of fresh basil
+fresh ground pepper, to taste</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yu9-m5-mxI">
+                                <rect key="frame" x="190" y="467" width="34" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="eN1-iF-V8F"/>
+                    </view>
+                    <connections>
+                        <outlet property="thumbnailLabel" destination="4pI-gQ-Zsx" id="oj1-Jc-aHO"/>
+                        <outlet property="titleLabel" destination="Yu9-m5-mxI" id="ly1-um-INi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="peC-gN-4AZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2520" y="21"/>
         </scene>
     </scenes>
 </document>
