@@ -42,6 +42,10 @@ class ExploreViewController: UIViewController {
 
     }
     
+    @IBAction func getInfo(_ sender: Any) {
+        performSegue(withIdentifier: "toIngredientsScreen", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toIngredientsScreen" {
             let ingredientsScreen = segue.destination as! IngredientsViewController

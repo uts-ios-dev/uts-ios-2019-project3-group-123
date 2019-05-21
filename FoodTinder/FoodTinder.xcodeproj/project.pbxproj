@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B947D70422939F7C0013570B /* IngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B947D70322939F7C0013570B /* IngredientsViewController.swift */; };
+		B94C3E8422944C9400080744 /* SavedRecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94C3E8322944C9400080744 /* SavedRecipesTableViewController.swift */; };
 		FAE74750228BEA6D00324BF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE7474F228BEA6D00324BF0 /* AppDelegate.swift */; };
 		FAE74752228BEA6D00324BF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE74751228BEA6D00324BF0 /* ViewController.swift */; };
 		FAE74755228BEA6D00324BF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE74753228BEA6D00324BF0 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		B947D70322939F7C0013570B /* IngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewController.swift; sourceTree = "<group>"; };
+		B94C3E8322944C9400080744 /* SavedRecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipesTableViewController.swift; sourceTree = "<group>"; };
 		FAE7474C228BEA6D00324BF0 /* FoodTinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE7474F228BEA6D00324BF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAE74751228BEA6D00324BF0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 		FAE74743228BEA6D00324BF0 = {
 			isa = PBXGroup;
 			children = (
+				B94C3E8322944C9400080744 /* SavedRecipesTableViewController.swift */,
 				FAE7474E228BEA6D00324BF0 /* FoodTinder */,
 				FAE7474D228BEA6D00324BF0 /* Products */,
 			);
@@ -160,6 +163,7 @@
 				FAFFC0C72291113E0065091A /* SwipableCard.swift in Sources */,
 				FAFFC0CB2291510F0065091A /* Extensions.swift in Sources */,
 				FAFFC0CD229174620065091A /* Recipe.swift in Sources */,
+				B94C3E8422944C9400080744 /* SavedRecipesTableViewController.swift in Sources */,
 				FAFFC0C52290365A0065091A /* ExploreViewController.swift in Sources */,
 				FAE74752228BEA6D00324BF0 /* ViewController.swift in Sources */,
 				B947D70422939F7C0013570B /* IngredientsViewController.swift in Sources */,
