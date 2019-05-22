@@ -51,7 +51,7 @@ class ExploreViewController: UIViewController {
     }
     
     @IBAction func getInfo(_ sender: Any) {
-        performSegue(withIdentifier: "toIngredientsScreen", sender: self)
+        //performSegue(withIdentifier: "toIngredientsScreen", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
