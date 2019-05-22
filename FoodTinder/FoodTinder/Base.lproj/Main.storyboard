@@ -171,6 +171,7 @@
                                 </state>
                                 <connections>
                                     <action selector="getInfo:" destination="XfT-Kq-kCk" eventType="touchUpInside" id="bxD-jf-xA2"/>
+                                    <segue destination="XuP-b2-evY" kind="show" identifier="toIngredientsScreen" id="KIA-LL-YxB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8D-YN-C9x">
@@ -183,7 +184,6 @@
                                 </state>
                                 <connections>
                                     <action selector="swipeRight:" destination="XfT-Kq-kCk" eventType="touchUpInside" id="fXZ-TH-V2x"/>
-                                    <segue destination="XuP-b2-evY" kind="show" identifier="toIngredientsScreen" id="qbN-QB-irS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvK-lO-khN">

@@ -48,7 +48,6 @@ class ExploreViewController: UIViewController {
     @IBAction func swipeRight(_ sender: UIButton) {
         SwipableCard.currentTop?.swipe(.right)
         //performSegue(withIdentifier: "toIngredientsScreen", sender: self)
-
     }
     
     @IBAction func getInfo(_ sender: Any) {
