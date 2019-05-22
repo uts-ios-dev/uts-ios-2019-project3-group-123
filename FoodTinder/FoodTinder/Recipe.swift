@@ -16,6 +16,7 @@ class Recipe {
     var type: String
     var author: String
     var index: Int
+    var isLiked: Bool?
     
     init(imageName: String, name: String, index: Int){
         self.imageName = imageName

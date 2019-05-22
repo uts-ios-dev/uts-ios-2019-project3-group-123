@@ -8,16 +8,22 @@
 
 import UIKit
 
-enum SwipeDirection: Int {
-    case left = -1, none, right
+enum CardState: Int {
+    case left = -1, normal, right, next, end
     //The UIColor value
     var color: UIColor {
         switch self {
-        case .left:  return UIColor.red
-        case .none: return UIColor.lightGray
-        case .right:return UIColor.green
+        case .left:     return UIColor.red
+        case .normal:   return UIColor.black
+        case .right:    return UIColor.green
+        case .next:     return UIColor.black
+        case .end:      return UIColor.black
         }
     }
+}
+
+enum ShiftWay: Int {
+    case pop, back, none
 }
 
 class SwipableCard: UIView {
@@ -26,42 +32,68 @@ class SwipableCard: UIView {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var thumbView: UIImageView!
     
-    static var currentIndex: Int = 0
     static var total: Int = 0
-    let offZone: CGFloat = 0.3
-    //The rotation when card is about to leave screen. PI/8 is 180/8 about 22.5 in degree
-    let rotationOffScreen: CGFloat = .pi/8
-    var leftEnd: CGPoint = CGPoint.zero
-    var rightEnd: CGPoint = CGPoint.zero
-    var offset: CGPoint = CGPoint.zero
-    var screenCenter: CGPoint = CGPoint.zero
-    var index: Int = 0
-    var standardSize: CGSize = CGSize.zero
+    static var currentTop: SwipableCard?
+
+    //Constances
+    let offZone: CGFloat = 0.2
+    let offScreenRotation: CGFloat = .pi/8  //The rotation when card is about to leave screen. PI/8 is 180/8 about 22.5 in degree
+    let offScreenAlpha: CGFloat = 0.8
+    let offScreenScale: CGFloat = 0.8
+    let nextCardScale: CGFloat = 0.8
+    let animDuration: TimeInterval = 0.2
     
+    var screenCenter: CGPoint {
+        get { return self.superview?.center ?? self.center }
+    }
+    var leftEnd: CGPoint {
+        get { return CGPoint(x: -screenCenter.x, y: screenCenter.y) }
+    }
+    var rightEnd: CGPoint {
+        get { return CGPoint(x: screenCenter.x * 3, y: screenCenter.y) }
+    }
+    var standardSize: CGSize {
+        get {
+            return CGSize(width: screenCenter.x * 1.6, height: screenCenter.y * 1.6)
+        }
+    }
+    var offset: CGPoint = CGPoint.zero
+    var index: Int = 0 {
+        didSet{
+            self.layer.zPosition = CGFloat(SwipableCard.total - index - 1)
+            setActive(to: index == 0)
+        }
+    }
+    
+    var recipe: Recipe?
     var lastCard: SwipableCard?
     var nextCard: SwipableCard?
-
+    var debugMode: Bool = false
+    
+//    override init(frame: CGRect){
+//        super.init(frame: frame)
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+    
     override func awakeFromNib() {
         self.layer.cornerRadius = 15
         self.backgroundColor = UIColor.black
-        //imageView.layer.cornerRadius = 15
+        imageView.layer.cornerRadius = 15
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(panCard(_:)))
-        self.isUserInteractionEnabled = true
         self.addGestureRecognizer(gesture)
+        self.isUserInteractionEnabled = false
     }
     
     func loadContent(recipe: Recipe){
+        self.recipe = recipe
         imageView.image = UIImage(named: recipe.imageName)
         title.text = recipe.name
-        index = recipe.index
-        if let parent = self.superview {
-            screenCenter = parent.center
-        }else{
-            screenCenter = self.center
-        }
-        leftEnd = CGPoint(x: -screenCenter.x, y: screenCenter.y)
-        rightEnd = CGPoint(x: screenCenter.x * 3, y: screenCenter.y)
-        standardSize = CGSize(width: screenCenter.x * 1.6, height: screenCenter.y * 1.6)
+        //index = recipe.index
+        self.frame.size.width = self.standardSize.width
+        self.frame.size.height = self.standardSize.height
     }
     
     @objc func panCard(_ sender: UIPanGestureRecognizer){
@@ -72,8 +104,8 @@ class SwipableCard: UIView {
         
         sender.setTranslation(CGPoint.zero, in: self.superview)
         
-        let scale = 1 - abs(offset.x*0.5/screenCenter.x)*0.5
-        card.transform = CGAffineTransform(rotationAngle: rotationOffScreen * offset.x / screenCenter.x).scaledBy(x: scale, y: scale)
+        let scale = offsetMap(offScreenScale)
+        card.transform = CGAffineTransform(rotationAngle: offScreenRotation * offset.x / screenCenter.x).scaledBy(x: scale, y: scale)
 
         if offset.x > 0 {
             //thumbView.image = UIImage(named: "Nice")
@@ -86,7 +118,7 @@ class SwipableCard: UIView {
         }
 
         //thumbView.alpha = abs(offset.x)/screenCenter.x
-        self.alpha = 1 - abs(offset.x)*0.5/screenCenter.x
+        self.alpha = offsetMap(offScreenAlpha)
 
         if sender.state == UIGestureRecognizer.State.ended {
 
@@ -100,49 +132,135 @@ class SwipableCard: UIView {
         }
     }
     
-    func swipe(_ direction: SwipeDirection){
-        let goal = screenCenter.add(target: CGPoint(x: CGFloat(direction.rawValue) * 2 * screenCenter.x, y: 0))
-        UIView.animate(withDuration: 0.3) {
-            self.center = goal.add(target: CGPoint(x: 0, y: 75))
-            self.transform = CGAffineTransform(rotationAngle: self.rotationOffScreen * 2 * CGFloat(direction.rawValue)).scaledBy(x: 0.5, y: 0.5)
-            self.backgroundColor = direction.color
+    func offsetMap(_ value: CGFloat) -> CGFloat {
+        return 1 - abs(offset.x*(1-value)/screenCenter.x)
+    }
+    
+    func swipe(_ direction: CardState){
+        self.recipe?.isLiked = direction == .right
+        UIView.animate(withDuration: animDuration) {
+            self.shift(.pop)
+        }
+    }
+    
+    func regret() {
+        UIView.animate(withDuration: animDuration) {
+            self.shift(.back)
         }
     }
     
     func back(){
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: animDuration) {
+            self.shift(.none)
+        }
+    }
+    
+    func shift(_ way: ShiftWay){
+        if way == .back {
+            if index == SwipableCard.total - 1 {
+                self.superview?.bringSubviewToFront(self)
+            }
+            setIndex(index: (index + 1) % SwipableCard.total)
+            if self.lastCard?.index == self.index {
+                self.lastCard?.shift(way)
+            }
+        } else if way == .pop{
+            if index == SwipableCard.total - 1 {
+                self.superview?.sendSubviewToBack(self)
+            }
+            setIndex(index: (SwipableCard.total + index - 1) % SwipableCard.total)
+            if self.nextCard?.index == self.index {
+                self.nextCard?.shift(way)
+            }
+        } else {
+            if self.index == 0 {
+                self.setState(state: .normal)
+                //self.nextCard?.setState(state: .next)
+//                self.setIndex(index: 0)
+//                self.nextCard?.setIndex(index: 1)
+//            } else {
+//                self.nextCard?.shift(.none)
+            }
+        }
+    }
+    
+    func setActive(to active: Bool = true){
+        self.isUserInteractionEnabled = active
+    }
+    
+    func setIndex(index: Int){
+        self.index = index
+        if index == 0 {
+            debug("0 set")
+        }
+        switch index {
+        case 1:
+            setState(state: .next)
+            break
+        case 2:
+            setState(state: .end)
+            break
+        case 3:
+            if let liked = recipe?.isLiked {
+                setState(state: liked ? .right : .left)
+            } else {
+                setState(state: .left)
+            }
+            break
+        default:
+            setState(state: .normal)
+            SwipableCard.currentTop = self
+            break
+        }
+    }
+    
+    func setState(state: CardState) {
+        switch state {
+        case .left, .right:
+            let goal = screenCenter.add(target: CGPoint(x: CGFloat(state.rawValue) * 2 * screenCenter.x, y: 0))
+            self.center = goal.add(target: CGPoint(x: 0, y: 75))
+            self.transform = CGAffineTransform(rotationAngle: self.offScreenRotation * 2 * CGFloat(state.rawValue)).scaledBy(x: 0.5, y: 0.5)
+            self.backgroundColor = state.color
+            self.alpha = 0
+//            self.recipe?.isLiked = state == .right
+            break
+        case .end:
+            self.center = self.screenCenter
+            //self.thumbView.alpha = 0
+            self.alpha = 0
+            self.backgroundColor = state.color
+            self.transform = CGAffineTransform(rotationAngle: 0).scaledBy(x: nextCardScale, y: nextCardScale)
+            break
+        case .next:
             self.center = self.screenCenter
             //self.thumbView.alpha = 0
             self.alpha = 1
-            self.backgroundColor = UIColor.black
+            self.backgroundColor = state.color
+            self.transform = CGAffineTransform(rotationAngle: 0).scaledBy(x: nextCardScale, y: nextCardScale)
+            break
+        default:
+            self.center = self.screenCenter
+            //self.thumbView.alpha = 0
+            self.alpha = 1
+            self.backgroundColor = state.color
             self.transform = .identity
+            break
         }
     }
     
     func setLastCard(card: SwipableCard){
         lastCard = card
         card.nextCard = self
-        setIndex(index: card.index + 1)
-        //card.nextCard(self)
     }
     
-    func setNextCard(card: SwipableCard){
-        nextCard = card
-    }
-    
-    func moveUp(){
-        if index > 0 {
-            index -= 1
-            setIndex(index: index)
+    func debug(_ content: String){
+        if debugMode {
+            print(content)
         }
     }
     
-    func setIndex(index: Int){
-//        UIView.animate(withDuration: 0.2) {
-            self.frame.size.width = self.standardSize.width - CGFloat(index * 10)
-            self.frame.size.height = self.standardSize.height - CGFloat(index * 10)
-            self.center = self.screenCenter.add(target: CGPoint(x: 0, y: CGFloat(index * 10)))
-            self.alpha = 1 - CGFloat(index) * 0.2
-//        }
+    func enableDebug(){
+        debugMode = true
     }
+
 }
