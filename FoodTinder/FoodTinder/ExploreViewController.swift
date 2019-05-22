@@ -11,6 +11,7 @@ import UIKit
 class ExploreViewController: UIViewController {
     
     var cards: [SwipableCard] = []
+    var recipes: [Recipe] = []
     let totalCards: Int = 4
     var currentRecipe = ""
 
@@ -18,7 +19,6 @@ class ExploreViewController: UIViewController {
         super.viewDidLoad()
         SwipableCard.total = totalCards
         
-        var recipes: [Recipe] = []
         for i in 0 ..< 12 {
             let recipe: Recipe = Recipe(imageName: "sample\(i%4+1)", name: "Demo\(i%4+1)", index: i)
             recipes.append(recipe)
@@ -47,7 +47,7 @@ class ExploreViewController: UIViewController {
     
     @IBAction func swipeRight(_ sender: UIButton) {
         SwipableCard.currentTop?.swipe(.right)
-        performSegue(withIdentifier: "toIngredientsScreen", sender: self)
+        //performSegue(withIdentifier: "toIngredientsScreen", sender: self)
 
     }
     
@@ -58,8 +58,9 @@ class ExploreViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toIngredientsScreen" {
             let ingredientsScreen = segue.destination as! IngredientsViewController
-            ingredientsScreen.titleLabel = cards[0].title
-            ingredientsScreen.thumbnailLabel = cards[0].imageView
+            ingredientsScreen.recipe = SwipableCard.currentTop?.recipe
+            //ingredientsScreen.titleLabel.text = SwipableCard.currentTop?.title.text
+            //ingredientsScreen.thumbnailLabel.image = SwipableCard.currentTop?.imageView.image
             
         }
     }
@@ -67,4 +68,6 @@ class ExploreViewController: UIViewController {
     @IBAction func swipeLeft(_ sender: UIButton) {
         SwipableCard.currentTop?.swipe(.left)
     }
+    
+    
 }

@@ -54,7 +54,7 @@ class SwipableCard: UIView {
     }
     var standardSize: CGSize {
         get {
-            return CGSize(width: screenCenter.x * 1.6, height: screenCenter.y * 1.6)
+            return CGSize(width: screenCenter.x * 1.6, height: screenCenter.y * 1.4)
         }
     }
     var offset: CGPoint = CGPoint.zero

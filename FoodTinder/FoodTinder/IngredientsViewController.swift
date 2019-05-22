@@ -15,10 +15,20 @@ class IngredientsViewController: UIViewController {
     
     // need this to pass to an api to get the ingredients
     var recipeID: String?
+    var recipe: Recipe?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let myRecipe = recipe {
+            loadRecipe(recipe: myRecipe)
+        }
 
+    }
+    
+    func loadRecipe(recipe: Recipe){
+        titleLabel.text = recipe.name
+        thumbnailLabel.image = UIImage(named: recipe.imageName)
     }
     
     @IBAction func back() {
