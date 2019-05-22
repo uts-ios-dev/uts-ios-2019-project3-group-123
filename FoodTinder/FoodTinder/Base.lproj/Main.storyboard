@@ -79,25 +79,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKr-Jn-fvs">
-                                <rect key="frame" x="42" y="66" width="331" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="40"/>
-                                <state key="normal" title="About FoodTinder">
-                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="224-d1-bMo">
-                                <rect key="frame" x="40" y="354" width="333" height="262"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="224-d1-bMo">
+                                <rect key="frame" x="40" y="171" width="334" height="679"/>
                                 <string key="text">Browse through a random set of recipes. Swipe right to save it, swipe left to dislike it. Once you swipe right, you can view all the details and ingredients for the recipe. It also saves it into your list so you can view it at a later time.</string>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJA-6d-9c5">
+                                <rect key="frame" x="12" y="66" width="30" height="67"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="40"/>
+                                <state key="normal" title="&lt;">
+                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About FoodTinder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUk-dp-Oma">
+                                <rect key="frame" x="54" y="72" width="331" height="55"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.94569238769999997" green="1" blue="0.77581329700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="uUk-dp-Oma" firstAttribute="leading" secondItem="WJA-6d-9c5" secondAttribute="trailing" constant="12" id="2es-ie-gtR"/>
+                            <constraint firstItem="224-d1-bMo" firstAttribute="leading" secondItem="Gsy-LE-N2c" secondAttribute="leading" constant="40" id="7cM-nW-agt"/>
+                            <constraint firstItem="Gsy-LE-N2c" firstAttribute="trailing" secondItem="224-d1-bMo" secondAttribute="trailing" constant="40" id="Le5-xT-2FY"/>
+                            <constraint firstItem="WJA-6d-9c5" firstAttribute="leading" secondItem="Gsy-LE-N2c" secondAttribute="leading" constant="12" id="WfF-0k-d4y"/>
+                            <constraint firstItem="uUk-dp-Oma" firstAttribute="centerY" secondItem="WJA-6d-9c5" secondAttribute="centerY" id="Xls-hY-kFU"/>
+                            <constraint firstItem="224-d1-bMo" firstAttribute="top" secondItem="uUk-dp-Oma" secondAttribute="bottom" constant="44" id="c1R-jt-hlP"/>
+                            <constraint firstItem="Gsy-LE-N2c" firstAttribute="bottom" secondItem="224-d1-bMo" secondAttribute="bottom" constant="12" id="fwm-Qf-9F7"/>
+                            <constraint firstItem="WJA-6d-9c5" firstAttribute="top" secondItem="Gsy-LE-N2c" secondAttribute="top" constant="22" id="j9i-MT-MrH"/>
+                            <constraint firstItem="Gsy-LE-N2c" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uUk-dp-Oma" secondAttribute="trailing" constant="12" id="mD2-QN-Icn"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Gsy-LE-N2c"/>
                     </view>
                 </viewController>
