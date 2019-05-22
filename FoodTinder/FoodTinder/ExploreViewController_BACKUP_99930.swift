@@ -11,8 +11,11 @@ import UIKit
 class ExploreViewController: UIViewController {
     
     var cards: [SwipableCard] = []
+<<<<<<< HEAD
     let totalCards: Int = 4
+=======
     var currentRecipe = ""
+>>>>>>> 5a4c8f2c43e774b688961e0112b0e284f44d03a5
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +49,10 @@ class ExploreViewController: UIViewController {
     }
     
     @IBAction func swipeRight(_ sender: UIButton) {
+<<<<<<< HEAD
         SwipableCard.currentTop?.swipe(.right)
+=======
+        cards[0].swipe(.right)
         performSegue(withIdentifier: "toIngredientsScreen", sender: self)
 
     }
@@ -62,6 +68,7 @@ class ExploreViewController: UIViewController {
             ingredientsScreen.thumbnailLabel = cards[0].imageView
             
         }
+>>>>>>> 5a4c8f2c43e774b688961e0112b0e284f44d03a5
     }
     
     @IBAction func swipeLeft(_ sender: UIButton) {

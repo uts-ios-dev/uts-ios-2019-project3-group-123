@@ -121,7 +121,7 @@ class SwipableCard: UIView {
         self.alpha = offsetMap(offScreenAlpha)
 
         if sender.state == UIGestureRecognizer.State.ended {
-
+            
             if card.center.x < screenCenter.x * offZone {
                 swipe(.left)
             } else if card.center.x > screenCenter.x * (2-offZone) {

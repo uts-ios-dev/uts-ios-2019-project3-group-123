@@ -11,42 +11,33 @@ import UIKit
 class ExploreViewController: UIViewController {
     
     var cards: [SwipableCard] = []
-    let totalCards: Int = 4
     var currentRecipe = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        SwipableCard.total = totalCards
         
         var recipes: [Recipe] = []
-        for i in 0 ..< 12 {
-            let recipe: Recipe = Recipe(imageName: "sample\(i%4+1)", name: "Demo\(i%4+1)", index: i)
+        for i in 1 ... 4 {
+            let recipe: Recipe = Recipe(imageName: "sample\(i)", name: "Demo\(i)", index: i)
             recipes.append(recipe)
         }
-        //recipes.reverse()
         
-        for i in 0 ..< SwipableCard.total {
+        for i in 0 ..< 4 {
             if let card = Bundle.main.loadNibNamed("SwipableCard", owner: self, options: nil)?.first as? SwipableCard {
                 view.addSubview(card)
-                let id = SwipableCard.total - 1 - i
-                card.loadContent(recipe: recipes[id%recipes.count])
-                card.setIndex(index: id)
+                card.loadContent(recipe: recipes[i])
+                card.setIndex(index: 3-i)
                 cards.append(card)
             }
         }
-        for i in 0 ..< SwipableCard.total {
-            cards[i].setLastCard(card: cards[(i-1+SwipableCard.total)%SwipableCard.total])
-        }
-        
-        cards[0].enableDebug()
     }
     
     @IBAction func resetCard(_ sender: UIButton) {
-        SwipableCard.currentTop?.regret()
+        cards[0].back()
     }
     
     @IBAction func swipeRight(_ sender: UIButton) {
-        SwipableCard.currentTop?.swipe(.right)
+        cards[0].swipe(.right)
         performSegue(withIdentifier: "toIngredientsScreen", sender: self)
 
     }
@@ -65,6 +56,6 @@ class ExploreViewController: UIViewController {
     }
     
     @IBAction func swipeLeft(_ sender: UIButton) {
-        SwipableCard.currentTop?.swipe(.left)
+        cards[0].swipe(.left)
     }
 }
