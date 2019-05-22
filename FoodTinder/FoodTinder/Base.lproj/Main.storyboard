@@ -59,7 +59,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title=" "/>
                                 <connections>
-                                    <segue destination="4Df-Y8-3S1" kind="show" id="ezH-WW-G9u"/>
+                                    <segue destination="4Df-Y8-3S1" kind="presentation" id="BcP-59-QQN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -71,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="618.84057971014499" y="20.758928571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--About View Controller-->
         <scene sceneID="3N8-3F-YRV">
             <objects>
-                <viewController id="4Df-Y8-3S1" sceneMemberID="viewController">
+                <viewController id="4Df-Y8-3S1" customClass="AboutViewController" customModule="FoodTinder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jcq-MT-FjQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,6 +93,9 @@
                                     <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapBack:" destination="4Df-Y8-3S1" eventType="touchUpInside" id="eOh-kQ-ntN"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About FoodTinder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUk-dp-Oma">
                                 <rect key="frame" x="54" y="72" width="331" height="55"/>

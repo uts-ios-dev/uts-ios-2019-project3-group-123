@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92E260AB22951494006DA1AE /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E260AA22951494006DA1AE /* AboutViewController.swift */; };
 		B947D70422939F7C0013570B /* IngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B947D70322939F7C0013570B /* IngredientsViewController.swift */; };
 		B94C3E8422944C9400080744 /* SavedRecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94C3E8322944C9400080744 /* SavedRecipesTableViewController.swift */; };
 		FAE74750228BEA6D00324BF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE7474F228BEA6D00324BF0 /* AppDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		92E260AA22951494006DA1AE /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		B947D70322939F7C0013570B /* IngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewController.swift; sourceTree = "<group>"; };
 		B94C3E8322944C9400080744 /* SavedRecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipesTableViewController.swift; sourceTree = "<group>"; };
 		FAE7474C228BEA6D00324BF0 /* FoodTinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +86,7 @@
 				FAFFC0CA2291510F0065091A /* Extensions.swift */,
 				FAFFC0CC229174620065091A /* Recipe.swift */,
 				B947D70322939F7C0013570B /* IngredientsViewController.swift */,
+				92E260AA22951494006DA1AE /* AboutViewController.swift */,
 			);
 			path = FoodTinder;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 				FAE74752228BEA6D00324BF0 /* ViewController.swift in Sources */,
 				B947D70422939F7C0013570B /* IngredientsViewController.swift in Sources */,
 				FAE74758228BEA6D00324BF0 /* FoodTinder.xcdatamodeld in Sources */,
+				92E260AB22951494006DA1AE /* AboutViewController.swift in Sources */,
 				FAE74750228BEA6D00324BF0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
