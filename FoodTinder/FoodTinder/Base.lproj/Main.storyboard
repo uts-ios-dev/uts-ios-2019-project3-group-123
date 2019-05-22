@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lfE-OX-F1l">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -47,7 +47,7 @@
                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="8Pq-Rc-sk5" kind="show" id="1V0-5U-O7U"/>
+                                    <segue destination="8Pq-Rc-sk5" kind="show" id="H9k-rh-DxQ"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="invo2" translatesAutoresizingMaskIntoConstraints="NO" id="4os-f2-Lba" userLabel="info">
@@ -59,45 +59,65 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title=" "/>
                                 <connections>
-                                    <segue destination="4Df-Y8-3S1" kind="show" id="ezH-WW-G9u"/>
+                                    <segue destination="4Df-Y8-3S1" kind="presentation" id="BcP-59-QQN"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="1rC-u1-6ht"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="618.84057971014499" y="20.758928571428569"/>
+            <point key="canvasLocation" x="1528.985507246377" y="20.758928571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--About View Controller-->
         <scene sceneID="3N8-3F-YRV">
             <objects>
-                <viewController id="4Df-Y8-3S1" sceneMemberID="viewController">
+                <viewController id="4Df-Y8-3S1" customClass="AboutViewController" customModule="FoodTinder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jcq-MT-FjQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKr-Jn-fvs">
-                                <rect key="frame" x="42" y="66" width="331" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="40"/>
-                                <state key="normal" title="About FoodTinder">
-                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="224-d1-bMo">
-                                <rect key="frame" x="40" y="354" width="333" height="262"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="224-d1-bMo">
+                                <rect key="frame" x="40" y="171" width="334" height="679"/>
                                 <string key="text">Browse through a random set of recipes. Swipe right to save it, swipe left to dislike it. Once you swipe right, you can view all the details and ingredients for the recipe. It also saves it into your list so you can view it at a later time.</string>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJA-6d-9c5">
+                                <rect key="frame" x="12" y="66" width="30" height="67"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="40"/>
+                                <state key="normal" title="&lt;">
+                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapBack:" destination="4Df-Y8-3S1" eventType="touchUpInside" id="eOh-kQ-ntN"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About FoodTinder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUk-dp-Oma">
+                                <rect key="frame" x="54" y="72" width="331" height="55"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.94569238769999997" green="1" blue="0.77581329700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="uUk-dp-Oma" firstAttribute="leading" secondItem="WJA-6d-9c5" secondAttribute="trailing" constant="12" id="2es-ie-gtR"/>
+                            <constraint firstItem="224-d1-bMo" firstAttribute="leading" secondItem="Gsy-LE-N2c" secondAttribute="leading" constant="40" id="7cM-nW-agt"/>
+                            <constraint firstItem="Gsy-LE-N2c" firstAttribute="trailing" secondItem="224-d1-bMo" secondAttribute="trailing" constant="40" id="Le5-xT-2FY"/>
+                            <constraint firstItem="WJA-6d-9c5" firstAttribute="leading" secondItem="Gsy-LE-N2c" secondAttribute="leading" constant="12" id="WfF-0k-d4y"/>
+                            <constraint firstItem="uUk-dp-Oma" firstAttribute="centerY" secondItem="WJA-6d-9c5" secondAttribute="centerY" id="Xls-hY-kFU"/>
+                            <constraint firstItem="224-d1-bMo" firstAttribute="top" secondItem="uUk-dp-Oma" secondAttribute="bottom" constant="44" id="c1R-jt-hlP"/>
+                            <constraint firstItem="Gsy-LE-N2c" firstAttribute="bottom" secondItem="224-d1-bMo" secondAttribute="bottom" constant="12" id="fwm-Qf-9F7"/>
+                            <constraint firstItem="WJA-6d-9c5" firstAttribute="top" secondItem="Gsy-LE-N2c" secondAttribute="top" constant="22" id="j9i-MT-MrH"/>
+                            <constraint firstItem="Gsy-LE-N2c" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uUk-dp-Oma" secondAttribute="trailing" constant="12" id="mD2-QN-Icn"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Gsy-LE-N2c"/>
                     </view>
                 </viewController>
@@ -151,7 +171,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFU-tY-lNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1089.8550724637682" y="756.69642857142856"/>
+            <point key="canvasLocation" x="1893" y="816"/>
         </scene>
         <!--Explore View Controller-->
         <scene sceneID="XLV-VI-koh">
@@ -213,7 +233,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="Ufg-yJ-Lza"/>
+                                    <segue destination="lfE-OX-F1l" kind="show" id="Ufg-yJ-Lza"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7g-k6-96r">
@@ -228,7 +248,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jhd-Nn-r0w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1589.8550724637682" y="20.758928571428569"/>
+            <point key="canvasLocation" x="2500" y="20.758928571428569"/>
         </scene>
         <!--Ingredients View Controller-->
         <scene sceneID="3TV-Ib-rHT">
@@ -290,7 +310,25 @@ fresh ground pepper, to taste</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="peC-gN-4AZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2518.840579710145" y="20.758928571428569"/>
+            <point key="canvasLocation" x="3428.985507246377" y="20.758928571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4RW-tJ-uj8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lfE-OX-F1l" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ay7-WA-A5g">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="f4x-TN-s1B"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E7b-Zu-CBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="618.84057971014499" y="20.758928571428569"/>
         </scene>
     </scenes>
     <resources>
