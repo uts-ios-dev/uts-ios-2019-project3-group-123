@@ -37,8 +37,8 @@ class CoreDataManager {
         // Return early if it doesn't exist
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
         
-        /// Create fetch request for entity "Recipe"
-        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Recipe")
+        /// Create fetch request for entity "SavedRecipe"
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "SavedRecipe")
         
         // Attempt to fetch the data
         // If we can't, return nil
