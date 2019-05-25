@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9256C4772299F5630005B1CA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9256C4762299F5630005B1CA /* CoreDataManager.swift */; };
 		92E260AB22951494006DA1AE /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E260AA22951494006DA1AE /* AboutViewController.swift */; };
 		B947D70422939F7C0013570B /* IngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B947D70322939F7C0013570B /* IngredientsViewController.swift */; };
 		B94C3E8422944C9400080744 /* SavedRecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94C3E8322944C9400080744 /* SavedRecipesTableViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9256C4762299F5630005B1CA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		92E260AA22951494006DA1AE /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		B947D70322939F7C0013570B /* IngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewController.swift; sourceTree = "<group>"; };
 		B94C3E8322944C9400080744 /* SavedRecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipesTableViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				FAFFC0CC229174620065091A /* Recipe.swift */,
 				B947D70322939F7C0013570B /* IngredientsViewController.swift */,
 				92E260AA22951494006DA1AE /* AboutViewController.swift */,
+				9256C4762299F5630005B1CA /* CoreDataManager.swift */,
 			);
 			path = FoodTinder;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				FAE74758228BEA6D00324BF0 /* FoodTinder.xcdatamodeld in Sources */,
 				92E260AB22951494006DA1AE /* AboutViewController.swift in Sources */,
 				FAE74750228BEA6D00324BF0 /* AppDelegate.swift in Sources */,
+				9256C4772299F5630005B1CA /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
