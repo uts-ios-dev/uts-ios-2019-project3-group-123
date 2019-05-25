@@ -15,6 +15,8 @@ class SavedRecipesTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
+    
+    private var selectedRecipe: Recipe?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,26 @@ class SavedRecipesTableViewController: UITableViewController {
         }
 
         return UITableViewCell()
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let savedRecipe = savedRecipes?[indexPath.row] {
+            let recipe = Recipe(imageName: savedRecipe.imageName ?? "Unknown",
+                                name: savedRecipe.name ?? "Unknown",
+                                index: 0) // TODO: Don't need to send through index
+            selectedRecipe = recipe
+            performSegue(withIdentifier: "toIngredientsScreen", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toIngredientsScreen" {
+            if let ingredientsScreen = segue.destination as? IngredientsViewController {
+                ingredientsScreen.recipe = selectedRecipe
+            }
+        }
     }
 
 }
