@@ -208,13 +208,11 @@ class SwipableCard: UIView {
     
     func setState(state: CardState) {
         switch state {
-        case .left, .right:
-            let goal = screenCenter.add(target: CGPoint(x: CGFloat(state.rawValue) * 2 * screenCenter.x, y: 0))
-            self.center = goal.add(target: CGPoint(x: 0, y: 75))
-            self.transform = CGAffineTransform(rotationAngle: self.offScreenRotation * 2 * CGFloat(state.rawValue)).scaledBy(x: 0.5, y: 0.5)
-            self.backgroundColor = state.color
-            self.alpha = 0
-//            self.recipe?.isLiked = state == .right
+        case .left:
+            animateCardAfterSwipe(state)
+        case .right:
+            animateCardAfterSwipe(state)
+            markCardAsLiked()
         case .end:
             self.center = self.screenCenter
             //self.thumbView.alpha = 0
@@ -249,6 +247,19 @@ class SwipableCard: UIView {
     
     func enableDebug(){
         debugMode = true
+    }
+    
+    private func animateCardAfterSwipe(_ state: CardState) {
+        let goal = screenCenter.add(target: CGPoint(x: CGFloat(state.rawValue) * 2 * screenCenter.x, y: 0))
+        self.center = goal.add(target: CGPoint(x: 0, y: 75))
+        self.transform = CGAffineTransform(rotationAngle: self.offScreenRotation * 2 * CGFloat(state.rawValue)).scaledBy(x: 0.5, y: 0.5)
+        self.backgroundColor = state.color
+        self.alpha = 0
+    }
+    
+    private func markCardAsLiked() {
+        guard let recipe = recipe else { return }
+        CoreDataManager.save(recipe)
     }
 
 }
