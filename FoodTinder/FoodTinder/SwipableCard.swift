@@ -196,21 +196,13 @@ class SwipableCard: UIView {
         switch index {
         case 1:
             setState(state: .next)
-            break
         case 2:
             setState(state: .end)
-            break
         case 3:
-            if let liked = recipe?.isLiked {
-                setState(state: liked ? .right : .left)
-            } else {
-                setState(state: .left)
-            }
-            break
+            setState(state: recipe?.isLiked ?? false ? .right : .left)
         default:
             setState(state: .normal)
             SwipableCard.currentTop = self
-            break
         }
     }
     
@@ -223,28 +215,24 @@ class SwipableCard: UIView {
             self.backgroundColor = state.color
             self.alpha = 0
 //            self.recipe?.isLiked = state == .right
-            break
         case .end:
             self.center = self.screenCenter
             //self.thumbView.alpha = 0
             self.alpha = 0
             self.backgroundColor = state.color
             self.transform = CGAffineTransform(rotationAngle: 0).scaledBy(x: nextCardScale, y: nextCardScale)
-            break
         case .next:
             self.center = self.screenCenter
             //self.thumbView.alpha = 0
             self.alpha = 1
             self.backgroundColor = state.color
             self.transform = CGAffineTransform(rotationAngle: 0).scaledBy(x: nextCardScale, y: nextCardScale)
-            break
         default:
             self.center = self.screenCenter
             //self.thumbView.alpha = 0
             self.alpha = 1
             self.backgroundColor = state.color
             self.transform = .identity
-            break
         }
     }
     
