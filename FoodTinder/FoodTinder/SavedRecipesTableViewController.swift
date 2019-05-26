@@ -35,8 +35,8 @@ class SavedRecipesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "SavedListCell", for: indexPath) as? SavedListCell, let recipes = savedRecipes, let imageName = recipes[indexPath.row].imageName {
-            cell.nameLabel.text = recipes[indexPath.row].name
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "SavedListCell", for: indexPath) as? SavedListCell, let recipes = savedRecipes, let imageName = recipes[indexPath.row].image_url {
+            cell.nameLabel.text = recipes[indexPath.row].title
             cell.imageView?.image = UIImage(named: imageName)
             return cell
         }
@@ -48,10 +48,10 @@ class SavedRecipesTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if let savedRecipe = savedRecipes?[indexPath.row] {
-            let recipe = Recipe(imageName: savedRecipe.imageName ?? "Unknown",
-                                name: savedRecipe.name ?? "Unknown",
-                                index: 0) // TODO: Don't need to send through index
-            selectedRecipe = recipe
+//
+//            let recipe = Recipe(recipe_id: savedRecipe.recipe_id ?? "Unknown", title: savedRecipe.title ?? "Unknown", image_url: savedRecipe.image_url ?? "Unknown", publisher: savedRecipe.publisher ?? "Unknown", social_rank: savedRecipe.social_rank ?? 0)
+//
+//            selectedRecipe = recipe
             performSegue(withIdentifier: "toIngredientsScreen", sender: self)
         }
     }

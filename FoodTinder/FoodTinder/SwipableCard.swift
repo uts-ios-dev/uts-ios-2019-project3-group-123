@@ -89,8 +89,8 @@ class SwipableCard: UIView {
     
     func loadContent(recipe: Recipe){
         self.recipe = recipe
-        imageView.image = UIImage(named: recipe.imageName)
-        title.text = recipe.name
+        imageView.image = UIImage(named: recipe.image_url)
+        title.text = recipe.title
         //index = recipe.index
         self.frame.size.width = self.standardSize.width
         self.frame.size.height = self.standardSize.height
