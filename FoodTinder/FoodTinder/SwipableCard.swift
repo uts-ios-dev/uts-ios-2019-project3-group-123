@@ -196,55 +196,41 @@ class SwipableCard: UIView {
         switch index {
         case 1:
             setState(state: .next)
-            break
         case 2:
             setState(state: .end)
-            break
         case 3:
-            if let liked = recipe?.isLiked {
-                setState(state: liked ? .right : .left)
-            } else {
-                setState(state: .left)
-            }
-            break
+            setState(state: recipe?.isLiked ?? false ? .right : .left)
         default:
             setState(state: .normal)
             SwipableCard.currentTop = self
-            break
         }
     }
     
     func setState(state: CardState) {
         switch state {
-        case .left, .right:
-            let goal = screenCenter.add(target: CGPoint(x: CGFloat(state.rawValue) * 2 * screenCenter.x, y: 0))
-            self.center = goal.add(target: CGPoint(x: 0, y: 75))
-            self.transform = CGAffineTransform(rotationAngle: self.offScreenRotation * 2 * CGFloat(state.rawValue)).scaledBy(x: 0.5, y: 0.5)
-            self.backgroundColor = state.color
-            self.alpha = 0
-//            self.recipe?.isLiked = state == .right
-            break
+        case .left:
+            animateCardAfterSwipe(state)
+        case .right:
+            animateCardAfterSwipe(state)
+            markCardAsLiked()
         case .end:
             self.center = self.screenCenter
             //self.thumbView.alpha = 0
             self.alpha = 0
             self.backgroundColor = state.color
             self.transform = CGAffineTransform(rotationAngle: 0).scaledBy(x: nextCardScale, y: nextCardScale)
-            break
         case .next:
             self.center = self.screenCenter
             //self.thumbView.alpha = 0
             self.alpha = 1
             self.backgroundColor = state.color
             self.transform = CGAffineTransform(rotationAngle: 0).scaledBy(x: nextCardScale, y: nextCardScale)
-            break
         default:
             self.center = self.screenCenter
             //self.thumbView.alpha = 0
             self.alpha = 1
             self.backgroundColor = state.color
             self.transform = .identity
-            break
         }
     }
     
@@ -261,6 +247,19 @@ class SwipableCard: UIView {
     
     func enableDebug(){
         debugMode = true
+    }
+    
+    private func animateCardAfterSwipe(_ state: CardState) {
+        let goal = screenCenter.add(target: CGPoint(x: CGFloat(state.rawValue) * 2 * screenCenter.x, y: 0))
+        self.center = goal.add(target: CGPoint(x: 0, y: 75))
+        self.transform = CGAffineTransform(rotationAngle: self.offScreenRotation * 2 * CGFloat(state.rawValue)).scaledBy(x: 0.5, y: 0.5)
+        self.backgroundColor = state.color
+        self.alpha = 0
+    }
+    
+    private func markCardAsLiked() {
+        guard let recipe = recipe else { return }
+        CoreDataManager.save(recipe)
     }
 
 }

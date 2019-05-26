@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9256C4772299F5630005B1CA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9256C4762299F5630005B1CA /* CoreDataManager.swift */; };
+		9256C47B2299FBC60005B1CA /* SavedListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9256C47A2299FBC60005B1CA /* SavedListCell.swift */; };
 		92E260AB22951494006DA1AE /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E260AA22951494006DA1AE /* AboutViewController.swift */; };
 		B947D70422939F7C0013570B /* IngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B947D70322939F7C0013570B /* IngredientsViewController.swift */; };
 		B94C3E8422944C9400080744 /* SavedRecipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94C3E8322944C9400080744 /* SavedRecipesTableViewController.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9256C4762299F5630005B1CA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		9256C47A2299FBC60005B1CA /* SavedListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedListCell.swift; sourceTree = "<group>"; };
 		92E260AA22951494006DA1AE /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		B947D70322939F7C0013570B /* IngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewController.swift; sourceTree = "<group>"; };
 		B94C3E8322944C9400080744 /* SavedRecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipesTableViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +60,6 @@
 		FAE74743228BEA6D00324BF0 = {
 			isa = PBXGroup;
 			children = (
-				B94C3E8322944C9400080744 /* SavedRecipesTableViewController.swift */,
 				FAE7474E228BEA6D00324BF0 /* FoodTinder */,
 				FAE7474D228BEA6D00324BF0 /* Products */,
 			);
@@ -81,12 +84,15 @@
 				FAE7475E228BEA7400324BF0 /* Info.plist */,
 				FAE74756228BEA6D00324BF0 /* FoodTinder.xcdatamodeld */,
 				FAFFC0C42290365A0065091A /* ExploreViewController.swift */,
+				9256C47A2299FBC60005B1CA /* SavedListCell.swift */,
+				B94C3E8322944C9400080744 /* SavedRecipesTableViewController.swift */,
 				FAFFC0C62291113E0065091A /* SwipableCard.swift */,
 				FAFFC0C8229111550065091A /* SwipableCard.xib */,
 				FAFFC0CA2291510F0065091A /* Extensions.swift */,
 				FAFFC0CC229174620065091A /* Recipe.swift */,
 				B947D70322939F7C0013570B /* IngredientsViewController.swift */,
 				92E260AA22951494006DA1AE /* AboutViewController.swift */,
+				9256C4762299F5630005B1CA /* CoreDataManager.swift */,
 			);
 			path = FoodTinder;
 			sourceTree = "<group>";
@@ -168,11 +174,13 @@
 				FAFFC0CD229174620065091A /* Recipe.swift in Sources */,
 				B94C3E8422944C9400080744 /* SavedRecipesTableViewController.swift in Sources */,
 				FAFFC0C52290365A0065091A /* ExploreViewController.swift in Sources */,
+				9256C47B2299FBC60005B1CA /* SavedListCell.swift in Sources */,
 				FAE74752228BEA6D00324BF0 /* ViewController.swift in Sources */,
 				B947D70422939F7C0013570B /* IngredientsViewController.swift in Sources */,
 				FAE74758228BEA6D00324BF0 /* FoodTinder.xcdatamodeld in Sources */,
 				92E260AB22951494006DA1AE /* AboutViewController.swift in Sources */,
 				FAE74750228BEA6D00324BF0 /* AppDelegate.swift in Sources */,
+				9256C4772299F5630005B1CA /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

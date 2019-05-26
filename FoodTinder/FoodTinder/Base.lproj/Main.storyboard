@@ -145,26 +145,40 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="154" id="quc-Cc-y9d">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SavedListCell" rowHeight="154" id="quc-Cc-y9d" customClass="SavedListCell" customModule="FoodTinder" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="414" height="154"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="quc-Cc-y9d" id="phr-0p-bbA">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="153.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="4" translatesAutoresizingMaskIntoConstraints="NO" id="tss-vB-B2c">
-                                            <rect key="frame" x="20" y="11" width="240" height="128"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tss-vB-B2c">
+                                            <rect key="frame" x="20" y="11" width="240" height="132"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="240" id="DrV-pN-wRu"/>
+                                                <constraint firstAttribute="height" constant="132" id="xnq-JV-PWh"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvh-zk-dzG">
-                                            <rect key="frame" x="300" y="57" width="54" height="36"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvh-zk-dzG">
+                                            <rect key="frame" x="272" y="59" width="110" height="36"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="tss-vB-B2c" firstAttribute="leading" secondItem="phr-0p-bbA" secondAttribute="leadingMargin" id="6MZ-xV-Ifb"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="kvh-zk-dzG" secondAttribute="trailing" constant="12" id="DqZ-FA-8cQ"/>
+                                        <constraint firstItem="tss-vB-B2c" firstAttribute="top" secondItem="phr-0p-bbA" secondAttribute="topMargin" id="QXj-r7-Mlk"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="tss-vB-B2c" secondAttribute="bottom" id="UrK-lP-1SX"/>
+                                        <constraint firstItem="kvh-zk-dzG" firstAttribute="leading" secondItem="tss-vB-B2c" secondAttribute="trailing" constant="12" id="wX8-lr-W7a"/>
+                                        <constraint firstItem="kvh-zk-dzG" firstAttribute="centerY" secondItem="phr-0p-bbA" secondAttribute="centerY" id="yh3-9A-JwF"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="kvh-zk-dzG" id="VO9-vU-oDA"/>
+                                    <outlet property="recipeImageView" destination="tss-vB-B2c" id="eOg-aD-tiS"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -172,6 +186,9 @@
                             <outlet property="delegate" destination="8Pq-Rc-sk5" id="Wn3-2n-6mQ"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="XuP-b2-evY" kind="show" identifier="toIngredientsScreen" id="ssc-58-w8O"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFU-tY-lNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -223,7 +240,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2B-Ov-W2n">
-                                <rect key="frame" x="323" y="44" width="62" height="42"/>
+                                <rect key="frame" x="322" y="44" width="62" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Reset"/>
@@ -282,7 +299,7 @@ fresh ground pepper, to taste</string>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.94569238770174424" green="1" blue="0.77581329704931412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.94509803921568625" green="1" blue="0.77647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="eN1-iF-V8F"/>
                     </view>
                     <connections>
@@ -315,9 +332,11 @@ fresh ground pepper, to taste</string>
     </scenes>
     <resources>
         <image name="1" width="867" height="1300"/>
-        <image name="4" width="1880" height="1169"/>
         <image name="invo2" width="64" height="64"/>
         <image name="main" width="870" height="1300"/>
         <image name="tinderfood-logo" width="1000" height="1000"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ssc-58-w8O"/>
+    </inferredMetricsTieBreakers>
 </document>
