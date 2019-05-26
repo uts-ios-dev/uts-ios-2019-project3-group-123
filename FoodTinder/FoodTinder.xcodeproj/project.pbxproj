@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71F9757A1DC1E3E90F82A76C /* Pods_FoodTinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A270F7869D1EF7337FEE85C9 /* Pods_FoodTinder.framework */; };
 		9256C4772299F5630005B1CA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9256C4762299F5630005B1CA /* CoreDataManager.swift */; };
 		9256C47B2299FBC60005B1CA /* SavedListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9256C47A2299FBC60005B1CA /* SavedListCell.swift */; };
 		92E260AB22951494006DA1AE /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E260AA22951494006DA1AE /* AboutViewController.swift */; };
@@ -29,8 +30,11 @@
 		9256C4762299F5630005B1CA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		9256C47A2299FBC60005B1CA /* SavedListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedListCell.swift; sourceTree = "<group>"; };
 		92E260AA22951494006DA1AE /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		97FE50360DBD7B49C4370E45 /* Pods-FoodTinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTinder.release.xcconfig"; path = "Target Support Files/Pods-FoodTinder/Pods-FoodTinder.release.xcconfig"; sourceTree = "<group>"; };
+		A270F7869D1EF7337FEE85C9 /* Pods_FoodTinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodTinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B947D70322939F7C0013570B /* IngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewController.swift; sourceTree = "<group>"; };
 		B94C3E8322944C9400080744 /* SavedRecipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipesTableViewController.swift; sourceTree = "<group>"; };
+		E2DBE2C8F0113ED827161CFF /* Pods-FoodTinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodTinder.debug.xcconfig"; path = "Target Support Files/Pods-FoodTinder/Pods-FoodTinder.debug.xcconfig"; sourceTree = "<group>"; };
 		FAE7474C228BEA6D00324BF0 /* FoodTinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE7474F228BEA6D00324BF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAE74751228BEA6D00324BF0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,17 +55,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71F9757A1DC1E3E90F82A76C /* Pods_FoodTinder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		829C66AF326EDA618AE894CB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A270F7869D1EF7337FEE85C9 /* Pods_FoodTinder.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE4687C168C4F22762A3960B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E2DBE2C8F0113ED827161CFF /* Pods-FoodTinder.debug.xcconfig */,
+				97FE50360DBD7B49C4370E45 /* Pods-FoodTinder.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FAE74743228BEA6D00324BF0 = {
 			isa = PBXGroup;
 			children = (
 				FAE7474E228BEA6D00324BF0 /* FoodTinder */,
 				FAE7474D228BEA6D00324BF0 /* Products */,
+				DE4687C168C4F22762A3960B /* Pods */,
+				829C66AF326EDA618AE894CB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,9 +129,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAE74761228BEA7400324BF0 /* Build configuration list for PBXNativeTarget "FoodTinder" */;
 			buildPhases = (
+				C08CA298A5F194F8DC7739D9 /* [CP] Check Pods Manifest.lock */,
 				FAE74748228BEA6D00324BF0 /* Sources */,
 				FAE74749228BEA6D00324BF0 /* Frameworks */,
 				FAE7474A228BEA6D00324BF0 /* Resources */,
+				F38DD2599F1548BE6860812E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -163,6 +190,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C08CA298A5F194F8DC7739D9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FoodTinder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F38DD2599F1548BE6860812E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodTinder/Pods-FoodTinder-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodTinder/Pods-FoodTinder-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FoodTinder/Pods-FoodTinder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FAE74748228BEA6D00324BF0 /* Sources */ = {
@@ -324,6 +393,7 @@
 		};
 		FAE74762228BEA7400324BF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2DBE2C8F0113ED827161CFF /* Pods-FoodTinder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -342,6 +412,7 @@
 		};
 		FAE74763228BEA7400324BF0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97FE50360DBD7B49C4370E45 /* Pods-FoodTinder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
