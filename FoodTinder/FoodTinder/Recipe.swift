@@ -8,39 +8,6 @@
 
 import Foundation
 
-let APIExample = """
-            [
-                {
-                    "count": 30,
-                    "recipes": [
-                        {
-                            "recipe_id": "4",
-                            "title": "beef",
-                            "image_url": "exe.png",
-                            "publisher": "asd",
-                            "social_rank": 12
-                        },
-                        {
-                            "recipe_id": "5",
-                            "title": "pizza",
-                            "image_url": "exe.png",
-                            "publisher": "ds",
-                            "social_rank": 12
-                        },
-                        {
-                            "recipe_id": "6",
-                            "title": "burger",
-                            "image_url": "exe.png",
-                            "publisher": "asd",
-                            "social_rank": 12
-                        }
-                    ]
-                }
-            ]
-        """.data(using: .utf8)!
-
-
-
 class RecipeAPI: Codable {
     var count: Int
     var recipes: [Recipe]

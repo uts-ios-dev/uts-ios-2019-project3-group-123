@@ -13,37 +13,16 @@ class ExploreViewController: UIViewController {
     
     var cards: [SwipableCard] = []
     var recipes: [Recipe] = []
-    var totalCards: Int = 4
+    var totalCards: Int = 0
     var currentRecipe = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getRecipes()
-    }
-    
-    func getRecipes() {
-        let recipesAPI = "https://www.food2fork.com/api/search?key=018db47a955019294137b4e94194d624"
         
-        guard let url = URL(string: recipesAPI) else { return }
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data else { return }
-
-            let decoder = JSONDecoder()
-            do {
-                let recipeResults = try decoder.decode(RecipeAPI.self, from: data)
-
-                DispatchQueue.main.async {
-                    self.recipes = recipeResults.recipes
-                    self.totalCards = recipeResults.recipes.count
-                    self.setCards()
-                }
-                
-            } catch {
-                print("Failed to decode recipe: \(error.localizedDescription)")
-            }
-            
-        }.resume()
+        print("Received " + String(recipes.count) + " recipes")
+        if recipes.count != 0 {
+            setCards()
+        }
     }
     
     func setCards() {
