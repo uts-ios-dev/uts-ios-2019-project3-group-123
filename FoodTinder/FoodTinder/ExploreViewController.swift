@@ -33,9 +33,11 @@ class ExploreViewController: UIViewController {
             do {
                 let recipeResults = try decoder.decode(RecipeAPI.self, from: data)
                 
-                self.recipes = recipeResults.recipes
-                self.totalCards = self.recipes.count
-                self.setCards()
+                DispatchQueue.main.async {
+                    self.recipes = recipeResults.recipes
+                    self.totalCards = self.recipes.count
+                    self.setCards()
+                }
             
                 for recipe in self.recipes {
                     print(recipe.recipe_id + " " + recipe.title)
