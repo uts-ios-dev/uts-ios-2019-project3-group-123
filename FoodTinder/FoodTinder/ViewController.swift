@@ -20,7 +20,8 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         
-        loadRecipesFromAPI()
+        loadSampleData()
+        //loadRecipesFromAPI()
     }
     
     @IBAction func browseRecipesBtn(_ sender: Any) {
@@ -53,6 +54,59 @@ class ViewController: UIViewController {
             
         }.resume()
     }
+    
+    
+    // Instead of calling the food api, you can use this sample api for development.
+    func loadSampleData() {
+        
+        let sampleAPI = """
+            {
+                "count": 4,
+                "recipes": [
+                    {
+                        "recipe_id": "1",
+                        "title": "beef",
+                        "image_url": "exe.png",
+                        "publisher": "john",
+                        "social_rank": 12
+                    },
+                    {
+                        "recipe_id": "2",
+                        "title": "pizza",
+                        "image_url": "exe.png",
+                        "publisher": "jack",
+                        "social_rank": 10
+                    },
+                    {
+                        "recipe_id": "3",
+                        "title": "burger",
+                        "image_url": "exe.png",
+                        "publisher": "tom",
+                        "social_rank": 7
+                    },
+                    {
+                        "recipe_id": "4",
+                        "title": "pasta",
+                        "image_url": "exe.png",
+                        "publisher": "way",
+                        "social_rank": 10
+                    }
+                ]
+            }
+        """.data(using: .utf8)!
+        
+        let decoder = JSONDecoder()
+        
+        do {
+            let recipeResults = try decoder.decode(RecipeAPI.self, from: sampleAPI)
+            self.recipes = recipeResults.recipes
+            self.count = recipeResults.count
+            
+        } catch {
+            print("Failed to decode recipe: \(error.localizedDescription)")
+        }
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toBrowseScreen" {
