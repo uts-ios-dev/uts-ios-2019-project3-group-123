@@ -18,10 +18,7 @@ class ExploreViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        SwipableCard.total = totalCards
         getRecipes()
-        setCards()
     }
     
     func getRecipes() {
@@ -37,7 +34,9 @@ class ExploreViewController: UIViewController {
                 let recipeResults = try decoder.decode(RecipeAPI.self, from: data)
                 
                 self.recipes = recipeResults.recipes
-                
+                self.totalCards = self.recipes.count
+                self.setCards()
+            
                 for recipe in self.recipes {
                     print(recipe.recipe_id + " " + recipe.title)
                 }
@@ -51,6 +50,8 @@ class ExploreViewController: UIViewController {
     }
     
     func setCards() {
+        SwipableCard.total = totalCards
+
         for i in 0 ..< SwipableCard.total {
             if let card = Bundle.main.loadNibNamed("SwipableCard", owner: self, options: nil)?.first as? SwipableCard {
                 view.addSubview(card)
