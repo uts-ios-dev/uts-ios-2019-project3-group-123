@@ -32,15 +32,11 @@ class ExploreViewController: UIViewController {
             let decoder = JSONDecoder()
             do {
                 let recipeResults = try decoder.decode(RecipeAPI.self, from: data)
-                
+
                 DispatchQueue.main.async {
                     self.recipes = recipeResults.recipes
-                    self.totalCards = self.recipes.count
+                    self.totalCards = recipeResults.recipes.count
                     self.setCards()
-                }
-            
-                for recipe in self.recipes {
-                    print(recipe.recipe_id + " " + recipe.title)
                 }
                 
             } catch {
@@ -48,7 +44,6 @@ class ExploreViewController: UIViewController {
             }
             
         }.resume()
-        
     }
     
     func setCards() {

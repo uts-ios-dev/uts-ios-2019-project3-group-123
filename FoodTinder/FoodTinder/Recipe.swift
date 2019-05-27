@@ -52,6 +52,7 @@ class Recipe: Codable {
     var image_url: String
     var publisher: String
     var social_rank: Double
+    var image_data: Data?
     var ingredients: [String]?
     var index: Int?
     var isLiked: Bool?
