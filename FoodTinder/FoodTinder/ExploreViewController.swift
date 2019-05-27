@@ -13,7 +13,6 @@ class ExploreViewController: UIViewController {
     
     var cards: [SwipableCard] = []
     var recipes: [Recipe] = []
-    var totalCards: Int = 4
     var currentRecipe = ""
 
     override func viewDidLoad() {
@@ -21,8 +20,13 @@ class ExploreViewController: UIViewController {
         getRecipes()
     }
     
+    func getSamples() {
+        
+    }
+    
     func getRecipes() {
         let recipesAPI = "https://www.food2fork.com/api/search?key=018db47a955019294137b4e94194d624"
+        //let recipesAPI = String(APIExample)
         
         guard let url = URL(string: recipesAPI) else { return }
         
@@ -33,9 +37,12 @@ class ExploreViewController: UIViewController {
             do {
                 let recipeResults = try decoder.decode(RecipeAPI.self, from: data)
                 
-                self.recipes = recipeResults.recipes
-                self.totalCards = self.recipes.count
-                self.setCards()
+                DispatchQueue.main.async {
+                    self.recipes = recipeResults.recipes
+                    //self.totalCards = self.recipes.count
+                    SwipableCard.recipes = self.recipes
+                    self.setCards()
+                }
             
                 for recipe in self.recipes {
                     print(recipe.recipe_id + " " + recipe.title)
@@ -50,13 +57,11 @@ class ExploreViewController: UIViewController {
     }
     
     func setCards() {
-        SwipableCard.total = totalCards
-
         for i in 0 ..< SwipableCard.total {
             if let card = Bundle.main.loadNibNamed("SwipableCard", owner: self, options: nil)?.first as? SwipableCard {
                 view.addSubview(card)
                 let id = SwipableCard.total - 1 - i
-                card.loadContent(recipe: recipes[id%recipes.count])
+                card.loadContent(recipe: recipes[i%recipes.count])
                 card.setIndex(index: id)
                 cards.append(card)
             }
@@ -65,7 +70,11 @@ class ExploreViewController: UIViewController {
             cards[i].setLastCard(card: cards[(i-1+SwipableCard.total)%SwipableCard.total])
         }
         
-        cards[0].enableDebug()
+        //cards[0].enableDebug()
+    }
+    
+    func loadRecipe(_ recipe: Recipe, to card: SwipableCard) {
+        card.loadContent(recipe: recipe)
     }
     
     @IBAction func resetCard(_ sender: UIButton) {

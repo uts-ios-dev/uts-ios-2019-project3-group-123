@@ -32,8 +32,9 @@ class SwipableCard: UIView {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var thumbView: UIImageView!
     
-    static var total: Int = 0
+    static var total: Int = 4
     static var currentTop: SwipableCard?
+    static var recipes: [Recipe]?
 
     //Constances
     let offZone: CGFloat = 0.2
@@ -85,6 +86,8 @@ class SwipableCard: UIView {
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(panCard(_:)))
         self.addGestureRecognizer(gesture)
         self.isUserInteractionEnabled = false
+        self.frame.size.width = self.standardSize.width
+        self.frame.size.height = self.standardSize.height
     }
     
     func loadContent(recipe: Recipe){
@@ -92,8 +95,6 @@ class SwipableCard: UIView {
         imageView.image = UIImage(named: recipe.image_url)
         title.text = recipe.title
         //index = recipe.index
-        self.frame.size.width = self.standardSize.width
-        self.frame.size.height = self.standardSize.height
     }
     
     @objc func panCard(_ sender: UIPanGestureRecognizer){
@@ -130,6 +131,10 @@ class SwipableCard: UIView {
                 back()
             }
         }
+    }
+    
+    func getBottomCard() -> SwipableCard? {
+        return SwipableCard.currentTop?.nextCard?.nextCard
     }
     
     func offsetMap(_ value: CGFloat) -> CGFloat {
@@ -180,6 +185,13 @@ class SwipableCard: UIView {
 //                self.nextCard?.setIndex(index: 1)
 //            } else {
 //                self.nextCard?.shift(.none)
+            }
+            return
+        }
+        
+        if let id = SwipableCard.currentTop?.nextCard?.recipe?.index {
+            if let count = SwipableCard.recipes?.count {
+                SwipableCard.currentTop?.nextCard?.nextCard?.loadContent(recipe: SwipableCard.recipes![(id + 1) % count])
             }
         }
     }
