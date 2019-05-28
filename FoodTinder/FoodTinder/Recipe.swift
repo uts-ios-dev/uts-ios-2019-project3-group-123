@@ -8,67 +8,6 @@
 
 import Foundation
 
-let APIExample: String = """
-            [
-                {
-                    "count": 30,
-                    "recipes": [
-                        {
-                            "recipe_id": "4",
-                            "title": "beef",
-                            "image_url": "sample1.png",
-                            "publisher": "asd",
-                            "social_rank": 12
-                        },
-                        {
-                            "recipe_id": "5",
-                            "title": "pizza",
-                            "image_url": "sample2.png",
-                            "publisher": "ds",
-                            "social_rank": 12
-                        },
-                        {
-                            "recipe_id": "6",
-                            "title": "pasta",
-                            "image_url": "sample3.png",
-                            "publisher": "asd",
-                            "social_rank": 12
-                        },
-                        {
-                            "recipe_id": "7",
-                            "title": "noodle",
-                            "image_url": "sample4.png",
-                            "publisher": "asd",
-                            "social_rank": 12
-                        },
-                        {
-                            "recipe_id": "8",
-                            "title": "pork",
-                            "image_url": "sample1.png",
-                            "publisher": "asd",
-                            "social_rank": 12
-                        },
-                        {
-                            "recipe_id": "9",
-                            "title": "beef",
-                            "image_url": "sample2.png",
-                            "publisher": "asd",
-                            "social_rank": 12
-                        },
-                        {
-                            "recipe_id": "10",
-                            "title": "burger",
-                            "image_url": "sample3.png",
-                            "publisher": "asd",
-                            "social_rank": 12
-                        }
-                    ]
-                }
-            ]
-        """ //.data(using: .utf8)!
-
-
-
 class RecipeAPI: Codable {
     var count: Int
     var recipes: [Recipe]
@@ -80,6 +19,7 @@ class Recipe: Codable {
     var image_url: String
     var publisher: String
     var social_rank: Double
+    var image_data: Data?
     var ingredients: [String]?
     var index: Int?
     var isLiked: Bool?
