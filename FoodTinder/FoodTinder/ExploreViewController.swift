@@ -54,12 +54,7 @@ class ExploreViewController: UIViewController {
     @IBAction func resetCard(_ sender: UIButton) {
         SwipableCard.currentTop?.regret()
     }
-    
-//    @IBAction func swipeRight(_ sender: UIButton) {
-//        SwipableCard.currentTop?.swipe(.right)
-//        //performSegue(withIdentifier: "toIngredientsScreen", sender: self)
-//    }
-    
+
     @IBAction func getInfo(_ sender: Any) {
         //performSegue(withIdentifier: "toIngredientsScreen", sender: self)
     }
@@ -70,10 +65,4 @@ class ExploreViewController: UIViewController {
             ingredientsScreen.recipe = SwipableCard.currentTop?.recipe
         }
     }
-    
-//    @IBAction func swipeLeft(_ sender: UIButton) {
-//        SwipableCard.currentTop?.swipe(.left)
-//    }
-    
-    
 }
