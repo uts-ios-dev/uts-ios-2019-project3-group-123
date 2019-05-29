@@ -52,6 +52,7 @@ class Recipe: Codable {
                 let ingredientsResults = try decoder.decode(IngredientsAPI.self, from: data)
                 let ingredients = ingredientsResults.recipe.ingredients
                 self.ingredients = ingredients
+                print("Ingredients api called successfully")
                 completion(ingredients)
                 
             } catch {
@@ -59,10 +60,6 @@ class Recipe: Codable {
             }
             
         }.resume()
-    }
-    
-    func setIngredients(ingredients: [String]) {
-        self.ingredients = ingredients
     }
     
     func loadImage(imageView: UIImageView) {
