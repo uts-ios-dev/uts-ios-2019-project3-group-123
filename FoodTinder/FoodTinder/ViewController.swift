@@ -20,8 +20,8 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         
-        //loadSampleData()
-        loadRecipesFromAPI()
+        loadSampleData()
+        //loadRecipesFromAPI()
     }
     
     @IBAction func browseRecipesBtn(_ sender: Any) {
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
                 "recipes": [
                     {
                         "recipe_id": "1",
-                        "title": "1beef",
+                        "title": "this is a very very long title to test the uiview",
                         "image_url": "exe.png",
                         "publisher": "john",
                         "social_rank": 12
@@ -73,14 +73,14 @@ class ViewController: UIViewController {
                     {
                         "recipe_id": "2",
                         "title": "2pizza",
-                        "image_url": "exe.png",
+                        "image_url": "1",
                         "publisher": "jack",
                         "social_rank": 10
                     },
                     {
                         "recipe_id": "3",
                         "title": "3burger",
-                        "image_url": "exe.png",
+                        "image_url": "4",
                         "publisher": "tom",
                         "social_rank": 7
                     },
