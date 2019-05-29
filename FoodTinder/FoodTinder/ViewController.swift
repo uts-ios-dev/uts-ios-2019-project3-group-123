@@ -20,8 +20,8 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         
-        loadSampleData()
-        //loadRecipesFromAPI()
+        //loadSampleData()
+        loadRecipesFromAPI()
     }
     
     @IBAction func browseRecipesBtn(_ sender: Any) {

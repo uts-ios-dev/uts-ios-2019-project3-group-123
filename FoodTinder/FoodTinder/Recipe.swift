@@ -6,7 +6,7 @@
 //  Copyright © 2019 Alex Lin. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class RecipeAPI: Codable {
     var count: Int
@@ -60,6 +60,25 @@ class Recipe: Codable {
     
     func setIngredients(ingredients: [String]) {
         self.ingredients = ingredients
+    }
+    
+    func loadImage(imageView: UIImageView) {
+        
+        // download image
+        if let url = URL(string: image_url) {
+            getData(from: url) { data, response, error in
+                guard let data = data, error == nil else { return }
+                
+                // display image to UI
+                DispatchQueue.main.async {
+                    imageView.image = UIImage(data: data)
+                }
+            }
+        }
+    }
+    
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
 }

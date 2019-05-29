@@ -98,7 +98,7 @@ class SwipableCard: UIView {
         self.recipe = recipe
         print("recipe \(recipe.title)")
         
-        loadImage()
+        recipe.loadImage(imageView: imageView)
         
         title.text = recipe.title
         //index = recipe.index
@@ -109,25 +109,6 @@ class SwipableCard: UIView {
         self.frame.size.height = self.standardSize.height
     }
     
-    
-    func loadImage() {
-        
-        // download image
-        if let url = URL(string: self.recipe!.image_url) {
-            getData(from: url) { data, response, error in
-                guard let data = data, error == nil else { return }
-
-                // display image to UI
-                DispatchQueue.main.async {
-                    self.imageView.image = UIImage(data: data)
-                }
-            }
-        }
-    }
-    
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-    }
     
     @objc func panCard(_ sender: UIPanGestureRecognizer){
         guard let card = sender.view else { return; }

@@ -28,7 +28,8 @@ class IngredientsViewController: UIViewController {
     
     func loadRecipe(recipe: Recipe){
         titleLabel.text = recipe.title
-        thumbnailLabel.image = UIImage(named: recipe.image_url)
+        //thumbnailLabel.image = UIImage(named: recipe.image_url)
+        recipe.loadImage(imageView: thumbnailLabel)
     }
     
     @IBAction func back() {
