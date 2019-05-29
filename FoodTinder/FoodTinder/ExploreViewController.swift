@@ -20,20 +20,27 @@ class ExploreViewController: UIViewController {
         super.viewDidLoad()
         
         print("Received " + String(recipes.count) + " recipes")
+        for i in 0 ..< recipes.count {
+            recipes[i].index = i
+        }
+        
         if recipes.count != 0 {
             setCards()
         }
+        
+        SwipableCard.recipes = recipes
     }
     
     func setCards() {
-        SwipableCard.total = totalCards
+        //SwipableCard.total = totalCards
 
         for i in 0 ..< SwipableCard.total {
             if let card = Bundle.main.loadNibNamed("SwipableCard", owner: self, options: nil)?.first as? SwipableCard {
                 view.addSubview(card)
-                let id = SwipableCard.total - 1 - i
-                card.loadContent(recipe: recipes[id%recipes.count])
-                card.setIndex(index: id)
+                card.resize()
+                //let id = SwipableCard.total - 1 - i
+                card.loadContent(recipe: recipes[i%recipes.count])
+                card.setIndex(index: i)
                 cards.append(card)
             }
         }
@@ -48,10 +55,10 @@ class ExploreViewController: UIViewController {
         SwipableCard.currentTop?.regret()
     }
     
-    @IBAction func swipeRight(_ sender: UIButton) {
-        SwipableCard.currentTop?.swipe(.right)
-        //performSegue(withIdentifier: "toIngredientsScreen", sender: self)
-    }
+//    @IBAction func swipeRight(_ sender: UIButton) {
+//        SwipableCard.currentTop?.swipe(.right)
+//        //performSegue(withIdentifier: "toIngredientsScreen", sender: self)
+//    }
     
     @IBAction func getInfo(_ sender: Any) {
         //performSegue(withIdentifier: "toIngredientsScreen", sender: self)
@@ -64,9 +71,9 @@ class ExploreViewController: UIViewController {
         }
     }
     
-    @IBAction func swipeLeft(_ sender: UIButton) {
-        SwipableCard.currentTop?.swipe(.left)
-    }
+//    @IBAction func swipeLeft(_ sender: UIButton) {
+//        SwipableCard.currentTop?.swipe(.left)
+//    }
     
     
 }

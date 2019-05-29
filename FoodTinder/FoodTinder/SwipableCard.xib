@@ -31,6 +31,9 @@
                     <state key="normal" title="More">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="MoreInfo:" destination="iN0-l3-epB" eventType="touchUpInside" id="4Ey-hx-EK2"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Whatever" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bDn-cS-Yeb">
                     <rect key="frame" x="0.0" y="44" width="414" height="77"/>
