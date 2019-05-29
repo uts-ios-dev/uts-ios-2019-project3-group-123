@@ -122,16 +122,16 @@ class SwipableCard: UIView {
         card.transform = CGAffineTransform(rotationAngle: offScreenRotation * offset.x / screenCenter.x).scaledBy(x: scale, y: scale)
 
         if offset.x > 0 {
-            //thumbView.image = UIImage(named: "Nice")
-            //thumbView.tintColor = UIColor.green
+            thumbView.image = UIImage(named: "Nice")
+            thumbView.tintColor = UIColor.green
             self.backgroundColor = UIColor.black.to(green: abs(offset.x*0.5/screenCenter.x))
         } else {
-            //thumbView.image = UIImage(named: "Bad")
-            //thumbView.tintColor = UIColor.red
+            thumbView.image = UIImage(named: "Bad")
+            thumbView.tintColor = UIColor.red
             self.backgroundColor = UIColor.black.to(red: abs(offset.x*0.5/screenCenter.x))
         }
 
-        //thumbView.alpha = abs(offset.x)/screenCenter.x
+        thumbView.alpha = abs(offset.x)/screenCenter.x
         self.alpha = offsetMap(offScreenAlpha)
 
         if sender.state == UIGestureRecognizer.State.ended {
@@ -246,19 +246,19 @@ class SwipableCard: UIView {
             markCardAsLiked()
         case .end:
             self.center = self.screenCenter
-            //self.thumbView.alpha = 0
+            self.thumbView.alpha = 0
             self.alpha = 0
             self.backgroundColor = state.color
             self.transform = CGAffineTransform(rotationAngle: 0).scaledBy(x: nextCardScale, y: nextCardScale)
         case .next:
             self.center = self.screenCenter
-            //self.thumbView.alpha = 0
+            self.thumbView.alpha = 0
             self.alpha = 1
             self.backgroundColor = state.color
             self.transform = CGAffineTransform(rotationAngle: 0).scaledBy(x: nextCardScale, y: nextCardScale)
         default:
             self.center = self.screenCenter
-            //self.thumbView.alpha = 0
+            self.thumbView.alpha = 0
             self.alpha = 1
             self.backgroundColor = state.color
             self.transform = .identity
