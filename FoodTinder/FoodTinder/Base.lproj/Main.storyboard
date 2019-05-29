@@ -37,7 +37,8 @@
                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="XfT-Kq-kCk" kind="show" id="aPm-lu-iJ2"/>
+                                    <action selector="browseRecipesBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FGy-oV-DFe"/>
+                                    <segue destination="XfT-Kq-kCk" kind="show" identifier="toBrowseScreen" id="aPm-lu-iJ2"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="invo2" translatesAutoresizingMaskIntoConstraints="NO" id="4os-f2-Lba" userLabel="info">

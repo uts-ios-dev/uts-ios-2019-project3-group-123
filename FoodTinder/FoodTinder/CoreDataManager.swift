@@ -19,12 +19,12 @@ class CoreDataManager {
         let context = appDelegate.persistentContainer.viewContext
         
         let savedRecipe = SavedRecipe(context: context)
-        savedRecipe.author = recipe.author
-        savedRecipe.content = recipe.content
-        savedRecipe.imageName = recipe.imageName
-        savedRecipe.name = recipe.name
-        savedRecipe.rate = recipe.rate
-        savedRecipe.type = recipe.type
+        savedRecipe.recipe_id = recipe.recipe_id
+        savedRecipe.publisher = recipe.publisher
+        //savedRecipe.ingredients = recipe.ingredients
+        savedRecipe.image_url = recipe.image_url
+        savedRecipe.title = recipe.title
+        savedRecipe.social_rank = recipe.social_rank
         
         appDelegate.saveContext()
     }

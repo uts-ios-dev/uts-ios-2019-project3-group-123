@@ -7,24 +7,27 @@
 //
 
 import UIKit
+import Foundation
 
 class ExploreViewController: UIViewController {
     
     var cards: [SwipableCard] = []
     var recipes: [Recipe] = []
-    let totalCards: Int = 4
+    var totalCards: Int = 0
     var currentRecipe = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        SwipableCard.total = totalCards
         
-        for i in 0 ..< 12 {
-            let recipe: Recipe = Recipe(imageName: "sample\(i%4+1)", name: "Demo\(i%4+1)", index: i)
-            recipes.append(recipe)
+        print("Received " + String(recipes.count) + " recipes")
+        if recipes.count != 0 {
+            setCards()
         }
-        //recipes.reverse()
-        
+    }
+    
+    func setCards() {
+        SwipableCard.total = totalCards
+
         for i in 0 ..< SwipableCard.total {
             if let card = Bundle.main.loadNibNamed("SwipableCard", owner: self, options: nil)?.first as? SwipableCard {
                 view.addSubview(card)
@@ -58,9 +61,6 @@ class ExploreViewController: UIViewController {
         if segue.identifier == "toIngredientsScreen" {
             let ingredientsScreen = segue.destination as! IngredientsViewController
             ingredientsScreen.recipe = SwipableCard.currentTop?.recipe
-            //ingredientsScreen.titleLabel.text = SwipableCard.currentTop?.title.text
-            //ingredientsScreen.thumbnailLabel.image = SwipableCard.currentTop?.imageView.image
-            
         }
     }
     
