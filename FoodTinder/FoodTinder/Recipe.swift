@@ -8,16 +8,24 @@
 
 import UIKit
 
+// api keys: 018db47a955019294137b4e94194d624, 2f2de49d072e7ad4d6de28ad29247a36, 97bf208eae7b1c390b2e8907a434aa2f
 class RecipeAPI: Codable {
     var count: Int
     var recipes: [Recipe]
+}
+
+class IngredientsAPI: Codable {
+    var recipe: IngredientsResult
+}
+
+class IngredientsResult: Codable {
+    let ingredients: [String]
 }
 
 class Recipe: Codable {
     var recipe_id: String
     var title: String
     var image_url: String
-    var image_data: Data?
     var ingredients: [String]?
     var index: Int?
     var isLiked: Bool?
@@ -30,8 +38,8 @@ class Recipe: Codable {
     }
     
     // Calls an api to get the ingredients by passing the recipe_id
-    func getIngredients() {
-        let ingredientsAPI = "https://www.food2fork.com/api/get?key=018db47a955019294137b4e94194d624&rId=\(self.recipe_id)"
+    func getIngredients(completion: @escaping (([String])->())) {
+        let ingredientsAPI = "https://www.food2fork.com/api/get?key=2f2de49d072e7ad4d6de28ad29247a36&rId=\(self.recipe_id)"
         
         guard let url = URL(string: ingredientsAPI) else { return }
         
@@ -41,11 +49,10 @@ class Recipe: Codable {
             let decoder = JSONDecoder()
             do {
                 
-                let ingredientsResults = try decoder.decode(Recipe.self, from: data)
-                
-                print(ingredientsResults)
-                // TODO: Need to set the ingredients from the api to self.ingredients
-                //setIngredients(ingredients: ingredientsResults.ingredients)
+                let ingredientsResults = try decoder.decode(IngredientsAPI.self, from: data)
+                let ingredients = ingredientsResults.recipe.ingredients
+                self.ingredients = ingredients
+                completion(ingredients)
                 
             } catch {
                 print("Failed to decode recipe: \(error.localizedDescription)")
