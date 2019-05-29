@@ -140,6 +140,7 @@ class SwipableCard: UIView {
                 swipe(.left)
             } else if card.center.x > screenCenter.x * (2-offZone) {
                 swipe(.right)
+                markCardAsLiked()
             } else {
                 back()
             }
