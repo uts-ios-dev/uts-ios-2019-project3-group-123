@@ -27,6 +27,18 @@ class IngredientsViewController: UIViewController {
     }
     
     func loadRecipe(recipe: Recipe){
+        recipe.getIngredients() { [weak self] ingredients in
+            
+            var ingredientsText = ""
+            ingredients.forEach { ingredient in
+                ingredientsText.append(ingredient)
+                ingredientsText.append("\n")
+            }
+            DispatchQueue.main.async {
+                self?.ingredientsLabel.text = ingredientsText
+            }
+        }
+        
         titleLabel.text = recipe.title
         //thumbnailLabel.image = UIImage(named: recipe.image_url)
         recipe.loadImage(imageView: thumbnailLabel)

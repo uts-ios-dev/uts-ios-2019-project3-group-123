@@ -282,6 +282,7 @@ fresh ground pepper, to taste</string>
                         <viewLayoutGuide key="safeArea" id="eN1-iF-V8F"/>
                     </view>
                     <connections>
+                        <outlet property="ingredientsLabel" destination="E9b-EF-PBZ" id="ZSO-pw-nhz"/>
                         <outlet property="thumbnailLabel" destination="4pI-gQ-Zsx" id="oj1-Jc-aHO"/>
                         <outlet property="titleLabel" destination="Yu9-m5-mxI" id="ly1-um-INi"/>
                     </connections>
