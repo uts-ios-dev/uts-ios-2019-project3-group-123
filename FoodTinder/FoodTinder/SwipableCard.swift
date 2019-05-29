@@ -31,9 +31,15 @@ class SwipableCard: UIView {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var thumbView: UIImageView!
+    @IBAction func MoreInfo(_ sender: UIButton) {
+        //performSegue(withIdentifier: "toIngredientsScreen", sender: self)
+    }
     
     static var total: Int = 4
     static var currentTop: SwipableCard?
+    static var currentEnd: SwipableCard? {
+        get { return SwipableCard.currentTop?.nextCard?.nextCard }
+    }
     static var recipes: [Recipe]?
 
     //Constances
@@ -55,7 +61,7 @@ class SwipableCard: UIView {
     }
     var standardSize: CGSize {
         get {
-            return CGSize(width: screenCenter.x * 1.6, height: screenCenter.y * 1.4)
+            return CGSize(width: screenCenter.x * 1.9, height: screenCenter.y * 1.6)
         }
     }
     var offset: CGPoint = CGPoint.zero
@@ -86,17 +92,21 @@ class SwipableCard: UIView {
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(panCard(_:)))
         self.addGestureRecognizer(gesture)
         self.isUserInteractionEnabled = false
-        self.frame.size.width = self.standardSize.width
-        self.frame.size.height = self.standardSize.height
     }
     
     func loadContent(recipe: Recipe){
         self.recipe = recipe
+        print("recipe \(recipe.title)")
         
         loadImage()
         
         title.text = recipe.title
         //index = recipe.index
+    }
+    
+    func resize(){
+        self.frame.size.width = self.standardSize.width
+        self.frame.size.height = self.standardSize.height
     }
     
     
@@ -184,20 +194,20 @@ class SwipableCard: UIView {
     
     func shift(_ way: ShiftWay){
         if way == .back {
+            setIndex(index: (index + 1) % SwipableCard.total)
+            if self.nextCard?.index == self.index {
+                self.nextCard?.shift(way)
+            }
             if index == SwipableCard.total - 1 {
                 self.superview?.bringSubviewToFront(self)
-            }
-            setIndex(index: (index + 1) % SwipableCard.total)
-            if self.lastCard?.index == self.index {
-                self.lastCard?.shift(way)
             }
         } else if way == .pop{
             if index == SwipableCard.total - 1 {
                 self.superview?.sendSubviewToBack(self)
             }
             setIndex(index: (SwipableCard.total + index - 1) % SwipableCard.total)
-            if self.nextCard?.index == self.index {
-                self.nextCard?.shift(way)
+            if self.lastCard?.index == self.index {
+                self.lastCard?.shift(way)
             }
         } else {
             if self.index == 0 {
@@ -211,10 +221,19 @@ class SwipableCard: UIView {
             return
         }
         
-        if let id = SwipableCard.currentTop?.nextCard?.recipe?.index {
-            if let count = SwipableCard.recipes?.count {
-                SwipableCard.currentTop?.nextCard?.nextCard?.loadContent(recipe: SwipableCard.recipes![(id + 1) % count])
+        if self.index == 2 {
+            if let id = self.lastCard?.recipe?.index {
+                if let count = SwipableCard.recipes?.count {
+                    loadContent(recipe: SwipableCard.recipes![(id + 1) % count])
+                    //SwipableCard.currentEnd?.setIndex(index: 2)
+                }
             }
+//            if let id = SwipableCard.currentTop?.nextCard?.recipe?.index {
+//                if let count = SwipableCard.recipes?.count {
+//                    SwipableCard.currentEnd?.loadContent(recipe: SwipableCard.recipes![(id + 1) % count])
+//                    //SwipableCard.currentEnd?.setIndex(index: 2)
+//                }
+//            }
         }
     }
     
@@ -224,9 +243,6 @@ class SwipableCard: UIView {
     
     func setIndex(index: Int){
         self.index = index
-        if index == 0 {
-            debug("0 set")
-        }
         switch index {
         case 1:
             setState(state: .next)
