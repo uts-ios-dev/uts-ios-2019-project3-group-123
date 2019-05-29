@@ -26,18 +26,14 @@ class Recipe: Codable {
     var recipe_id: String
     var title: String
     var image_url: String
-    var publisher: String
-    var social_rank: Double
     var ingredients: [String]?
     var index: Int?
     var isLiked: Bool?
     
-    init(recipe_id: String, title: String, image_url: String, publisher: String, social_rank: Double, index: Int?) {
+    init(recipe_id: String, title: String, image_url: String, index: Int?) {
         self.recipe_id = recipe_id
         self.title = title
         self.image_url = image_url
-        self.publisher = publisher
-        self.social_rank = social_rank
         self.index = index
     }
     

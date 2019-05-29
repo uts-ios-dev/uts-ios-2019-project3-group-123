@@ -20,6 +20,9 @@ class SavedRecipesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
 
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -35,9 +38,9 @@ class SavedRecipesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "SavedListCell", for: indexPath) as? SavedListCell, let recipes = savedRecipes, let imageName = recipes[indexPath.row].image_url {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "SavedListCell", for: indexPath) as? SavedListCell, let recipes = savedRecipes, let imageUrl = recipes[indexPath.row].image_url {
             cell.nameLabel.text = recipes[indexPath.row].title
-            cell.imageView?.image = UIImage(named: imageName)
+            loadImage(for: cell, imageUrl: imageUrl)
             return cell
         }
 
@@ -48,10 +51,9 @@ class SavedRecipesTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if let savedRecipe = savedRecipes?[indexPath.row] {
-//
-//            let recipe = Recipe(recipe_id: savedRecipe.recipe_id ?? "Unknown", title: savedRecipe.title ?? "Unknown", image_url: savedRecipe.image_url ?? "Unknown", publisher: savedRecipe.publisher ?? "Unknown", social_rank: savedRecipe.social_rank ?? 0)
-//
-//            selectedRecipe = recipe
+            
+            let recipe = Recipe(recipe_id: savedRecipe.recipe_id ?? "0", title: savedRecipe.title ?? "Unknown Recipe", image_url: savedRecipe.image_url ?? "", index: nil)
+            selectedRecipe = recipe
             performSegue(withIdentifier: "toIngredientsScreen", sender: self)
         }
     }
@@ -62,6 +64,27 @@ class SavedRecipesTableViewController: UITableViewController {
                 ingredientsScreen.recipe = selectedRecipe
             }
         }
+    }
+    
+    // MARK: Table View helpers
+    
+    func loadImage(for cell: SavedListCell, imageUrl: String) {
+        
+        // download image
+        if let url = URL(string: imageUrl) {
+            getData(from: url) { data, response, error in
+                guard let data = data, error == nil else { return }
+                
+                // display image to UI
+                DispatchQueue.main.async {
+                    cell.recipeImageView.image = UIImage(data: data)
+                }
+            }
+        }
+    }
+    
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 
 }
