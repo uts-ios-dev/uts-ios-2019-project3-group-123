@@ -25,9 +25,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func browseRecipesBtn(_ sender: Any) {
-//        if count != 0 {
-//            performSegue(withIdentifier: "toBrowseScreen", sender: self)
-//        }
+        if count != 0 {
+            performSegue(withIdentifier: "toBrowseScreen", sender: self)
+        }
     }
     
     func loadRecipesFromAPI() {
