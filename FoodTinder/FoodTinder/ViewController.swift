@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    
+    @IBOutlet weak var loadingLabel: UILabel!
+    
     var recipes: [Recipe] = []
     var count: Int = 0
 
@@ -28,7 +31,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func browseRecipesBtn(_ sender: Any) {
-        if count != 0 {
+        if loadingLabel.isHidden {
             performSegue(withIdentifier: "toBrowseScreen", sender: self)
         }
     }
@@ -50,6 +53,10 @@ class ViewController: UIViewController {
                 
                 self.recipes = recipeResults.recipes
                 self.count = recipeResults.count
+                
+                DispatchQueue.main.async {
+                    self.loadingLabel.isHidden = true;
+                }
                 
             } catch {
                 print("Failed to decode recipe: \(error.localizedDescription)")
