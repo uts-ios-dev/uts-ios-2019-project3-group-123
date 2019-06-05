@@ -76,15 +76,7 @@ class SwipableCard: UIView {
     var lastCard: SwipableCard?
     var nextCard: SwipableCard?
     var debugMode: Bool = false
-    
-//    override init(frame: CGRect){
-//        super.init(frame: frame)
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
+        
     override func awakeFromNib() {
         self.layer.cornerRadius = 15
         self.backgroundColor = UIColor.black
@@ -140,7 +132,7 @@ class SwipableCard: UIView {
                 swipe(.left)
             } else if card.center.x > screenCenter.x * (2-offZone) {
                 swipe(.right)
-                markCardAsLiked()
+                //markCardAsLiked()
             } else {
                 back()
             }
@@ -194,11 +186,6 @@ class SwipableCard: UIView {
         } else {
             if self.index == 0 {
                 self.setState(state: .normal)
-                //self.nextCard?.setState(state: .next)
-//                self.setIndex(index: 0)
-//                self.nextCard?.setIndex(index: 1)
-//            } else {
-//                self.nextCard?.shift(.none)
             }
             return
         }
@@ -210,12 +197,6 @@ class SwipableCard: UIView {
                     //SwipableCard.currentEnd?.setIndex(index: 2)
                 }
             }
-//            if let id = SwipableCard.currentTop?.nextCard?.recipe?.index {
-//                if let count = SwipableCard.recipes?.count {
-//                    SwipableCard.currentEnd?.loadContent(recipe: SwipableCard.recipes![(id + 1) % count])
-//                    //SwipableCard.currentEnd?.setIndex(index: 2)
-//                }
-//            }
         }
     }
     

@@ -39,7 +39,7 @@ class Recipe: Codable {
     
     // Calls an api to get the ingredients by passing the recipe_id
     func getIngredients(completion: @escaping (([String])->())) {
-        let ingredientsAPI = "https://www.food2fork.com/api/get?key=2f2de49d072e7ad4d6de28ad29247a36&rId=\(self.recipe_id)"
+        let ingredientsAPI = "https://www.food2fork.com/api/get?key=97bf208eae7b1c390b2e8907a434aa2f&rId=\(self.recipe_id)"
         
         guard let url = URL(string: ingredientsAPI) else { return }
         

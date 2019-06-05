@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     }
     
     func loadRecipesFromAPI() {
-        let recipesAPI = "https://www.food2fork.com/api/search?key=2f2de49d072e7ad4d6de28ad29247a36"
+        let recipesAPI = "https://www.food2fork.com/api/search?key=97bf208eae7b1c390b2e8907a434aa2f"
         
         guard let url = URL(string: recipesAPI) else { return }
         
