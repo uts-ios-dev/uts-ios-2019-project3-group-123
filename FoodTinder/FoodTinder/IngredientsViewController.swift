@@ -12,6 +12,7 @@ class IngredientsViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var thumbnailLabel: UIImageView!
     @IBOutlet weak var ingredientsLabel: UITextView!
+    @IBOutlet weak var ingredientTitle: UILabel!
     
     // need this to pass to an api to get the ingredients
     var recipeID: String?
@@ -37,6 +38,7 @@ class IngredientsViewController: UIViewController {
                 ingredientsText.append("\n")
             }
             
+            ingredientTitle.text = "Ingredients";
             ingredientsLabel.text = ingredientsText
             
         } else {
@@ -48,6 +50,7 @@ class IngredientsViewController: UIViewController {
                     ingredientsText.append("\n")
                 }
                 DispatchQueue.main.async {
+                    self?.ingredientTitle.text = "Ingredients";
                     self?.ingredientsLabel.text = ingredientsText
                 }
             }

@@ -286,20 +286,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="4pI-gQ-Zsx">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadingimage" translatesAutoresizingMaskIntoConstraints="NO" id="4pI-gQ-Zsx">
                                 <rect key="frame" x="0.0" y="110.5" width="414" height="392"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="392" id="IzN-2D-1mk"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="E9b-EF-PBZ">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Loading..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="E9b-EF-PBZ">
                                 <rect key="frame" x="24" y="582.5" width="366" height="255.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vdL-yu-z8B">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vdL-yu-z8B">
                                 <rect key="frame" x="12" y="64" width="390" height="32.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                 <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
@@ -331,6 +331,7 @@
                         <viewLayoutGuide key="safeArea" id="eN1-iF-V8F"/>
                     </view>
                     <connections>
+                        <outlet property="ingredientTitle" destination="uXn-hE-x3M" id="hB1-rO-wvD"/>
                         <outlet property="ingredientsLabel" destination="E9b-EF-PBZ" id="ZSO-pw-nhz"/>
                         <outlet property="thumbnailLabel" destination="4pI-gQ-Zsx" id="oj1-Jc-aHO"/>
                         <outlet property="titleLabel" destination="vdL-yu-z8B" id="dU3-Cm-h53"/>
@@ -360,8 +361,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1" width="867" height="1300"/>
         <image name="invo2" width="64" height="64"/>
+        <image name="loadingimage" width="480" height="270"/>
         <image name="main" width="870" height="1300"/>
         <image name="tinderfood-logo" width="1000" height="1000"/>
     </resources>
