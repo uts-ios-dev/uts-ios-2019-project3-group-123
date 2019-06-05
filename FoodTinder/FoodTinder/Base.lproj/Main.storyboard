@@ -259,7 +259,7 @@
                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="getInfo:" destination="XfT-Kq-kCk" eventType="touchUpInside" id="TRC-Wv-vhc"/>
+                                    <segue destination="8Pq-Rc-sk5" kind="show" id="iwU-Yr-nyH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -368,5 +368,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="KIA-LL-YxB"/>
+        <segue reference="iwU-Yr-nyH"/>
     </inferredMetricsTieBreakers>
 </document>

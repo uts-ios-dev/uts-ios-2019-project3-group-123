@@ -62,6 +62,7 @@ class Recipe: Codable {
         }.resume()
     }
     
+    //Load image to imageView
     func loadImage(imageView: UIImageView) {
         
         // download image
