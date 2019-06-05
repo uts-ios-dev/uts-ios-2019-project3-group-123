@@ -19,11 +19,12 @@ class ExploreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Received " + String(recipes.count) + " recipes")
+        // set an index for every recipe
         for i in 0 ..< recipes.count {
             recipes[i].index = i
         }
         
+        // if there are any recipes, display the cards.
         if recipes.count != 0 {
             setCards()
         }
@@ -31,9 +32,9 @@ class ExploreViewController: UIViewController {
         SwipableCard.recipes = recipes
     }
     
+    // displays each recipe and its content on the UI
+    // inject the recipes into the cards and initialize them
     func setCards() {
-        //SwipableCard.total = totalCards
-
         for i in 0 ..< SwipableCard.total {
             if let card = Bundle.main.loadNibNamed("SwipableCard", owner: self, options: nil)?.first as? SwipableCard {
                 view.addSubview(card)
@@ -49,14 +50,6 @@ class ExploreViewController: UIViewController {
         }
         
         cards[0].enableDebug()
-    }
-    
-    @IBAction func resetCard(_ sender: UIButton) {
-        SwipableCard.currentTop?.regret()
-    }
-
-    @IBAction func getInfo(_ sender: Any) {
-        //performSegue(withIdentifier: "toIngredientsScreen", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

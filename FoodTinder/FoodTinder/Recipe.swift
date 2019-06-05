@@ -8,12 +8,16 @@
 
 import UIKit
 
-// api keys: 018db47a955019294137b4e94194d624, 2f2de49d072e7ad4d6de28ad29247a36, 97bf208eae7b1c390b2e8907a434aa2f
+
+// EXTRA API keys: 018db47a955019294137b4e94194d624, 2f2de49d072e7ad4d6de28ad29247a36, 97bf208eae7b1c390b2e8907a434aa2f
+
+// Structure for Recipe API
 class RecipeAPI: Codable {
     var count: Int
     var recipes: [Recipe]
 }
 
+// Structure for Ingredients API
 class IngredientsAPI: Codable {
     var recipe: IngredientsResult
 }
@@ -37,22 +41,26 @@ class Recipe: Codable {
         self.index = index
     }
     
-    // Calls an api to get the ingredients by passing the recipe_id
+    // Call ingredients API to get the ingredients by passing in the recipe ID.
     func getIngredients(completion: @escaping (([String])->())) {
         let ingredientsAPI = "https://www.food2fork.com/api/get?key=97bf208eae7b1c390b2e8907a434aa2f&rId=\(self.recipe_id)"
         
+        // convert string url to type of URL
         guard let url = URL(string: ingredientsAPI) else { return }
         
+        // pass url to make the api call
         URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            // check if there is any data
             guard let data = data else { return }
             
             let decoder = JSONDecoder()
             do {
-                
+                // decode the data following the structure in IngredientsAPI
                 let ingredientsResults = try decoder.decode(IngredientsAPI.self, from: data)
                 let ingredients = ingredientsResults.recipe.ingredients
+                
                 self.ingredients = ingredients
-                print("Ingredients api called successfully")
                 completion(ingredients)
                 
             } catch {

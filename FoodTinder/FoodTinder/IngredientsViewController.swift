@@ -21,6 +21,7 @@ class IngredientsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // if there is a recipe, load the content
         if let myRecipe = recipe {
             loadRecipe(recipe: myRecipe)
         }
@@ -29,7 +30,7 @@ class IngredientsViewController: UIViewController {
     
     func loadRecipe(recipe: Recipe){
         
-        // getIngredients api only called if recipe.ingredients is null.
+        // Ingredients API is only called if ingredients is null.
         if let ingredients = recipe.ingredients {
             
             var ingredientsText = ""
