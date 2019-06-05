@@ -22,6 +22,7 @@ class CoreDataManager {
         //savedRecipe.ingredients = recipe.ingredients
         savedRecipe.image_url = recipe.image_url
         savedRecipe.title = recipe.title
+        savedRecipe.ingredients = recipe.ingredients
         
         appDelegate.saveContext()
     }

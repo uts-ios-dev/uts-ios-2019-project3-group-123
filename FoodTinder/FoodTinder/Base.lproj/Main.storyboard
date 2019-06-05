@@ -238,7 +238,6 @@
                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="getInfo:" destination="XfT-Kq-kCk" eventType="touchUpInside" id="bxD-jf-xA2"/>
                                     <segue destination="XuP-b2-evY" kind="show" identifier="toIngredientsScreen" id="KIA-LL-YxB"/>
                                 </connections>
                             </button>
@@ -246,9 +245,6 @@
                                 <rect key="frame" x="322" y="44" width="62" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Reset"/>
-                                <connections>
-                                    <action selector="resetCard:" destination="XfT-Kq-kCk" eventType="touchUpInside" id="Llj-0U-tn7"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOz-wj-Y3f">
                                 <rect key="frame" x="308" y="815" width="76" height="47"/>
@@ -331,7 +327,6 @@
                         <viewLayoutGuide key="safeArea" id="eN1-iF-V8F"/>
                     </view>
                     <connections>
-                        <outlet property="ingredientTitle" destination="uXn-hE-x3M" id="hB1-rO-wvD"/>
                         <outlet property="ingredientsLabel" destination="E9b-EF-PBZ" id="ZSO-pw-nhz"/>
                         <outlet property="thumbnailLabel" destination="4pI-gQ-Zsx" id="oj1-Jc-aHO"/>
                         <outlet property="titleLabel" destination="vdL-yu-z8B" id="dU3-Cm-h53"/>

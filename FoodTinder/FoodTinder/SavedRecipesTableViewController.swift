@@ -52,7 +52,8 @@ class SavedRecipesTableViewController: UITableViewController {
         
         if let savedRecipe = savedRecipes?[indexPath.row] {
             
-            let recipe = Recipe(recipe_id: savedRecipe.recipe_id ?? "0", title: savedRecipe.title ?? "Unknown Recipe", image_url: savedRecipe.image_url ?? "", index: nil)
+            let recipe = Recipe(recipe_id: savedRecipe.recipe_id ?? "0", title: savedRecipe.title ?? "Unknown Recipe", image_url: savedRecipe.image_url ?? "", index: nil, ingredients: savedRecipe.ingredients ?? "No ingredients")
+            
             selectedRecipe = recipe
             performSegue(withIdentifier: "toIngredientsScreen", sender: self)
         }

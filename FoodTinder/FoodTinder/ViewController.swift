@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
     @IBOutlet weak var loadingLabel: UILabel!
     
     var recipes: [Recipe] = []
@@ -39,7 +38,10 @@ class ViewController: UIViewController {
     
     // Sets recipes equal to the recipes returned from the api reponse.
     func loadRecipesFromAPI() {
-        let recipesAPI = "https://www.food2fork.com/api/search?key=97bf208eae7b1c390b2e8907a434aa2f"
+        
+        getAPIKey()
+        
+        let recipesAPI = "https://www.food2fork.com/api/search?key=\(API_keys.currentKey)"
         
         // convert string url to type of URL
         guard let url = URL(string: recipesAPI) else { return }
@@ -64,14 +66,30 @@ class ViewController: UIViewController {
                 }
                 
             } catch {
-                print("Failed to decode recipe: \(error.localizedDescription)")
+                if (error.localizedDescription == "Failed to decode recipe: The data couldn’t be read because it is missing.") {
+                    
+                    print("API Key changed")
+                    
+                } else {
+                    print("Failed to decode recipe: \(error.localizedDescription)")
+                }
             }
             
         }.resume()
     }
     
+    func getAPIKey() {
+        for key in API_keys.keys {
+            if !API_keys.used_keys.contains(key) {
+                API_keys.currentKey = key
+                API_keys.used_keys.append(key)
+                return
+            }
+        }
+        print("API limit passed, check back later.")
+    }
     
-    // Instead of calling the food api, you can use this sample api for development.
+    // Sample development API
     func loadSampleData() {
         
         let sampleAPI = """
@@ -137,6 +155,10 @@ class ViewController: UIViewController {
             let recipeResults = try decoder.decode(RecipeAPI.self, from: sampleAPI)
             self.recipes = recipeResults.recipes
             self.count = recipeResults.count
+            
+            DispatchQueue.main.async {
+                self.loadingLabel.isHidden = true;
+            }
             
         } catch {
             print("Failed to decode recipe: \(error.localizedDescription)")

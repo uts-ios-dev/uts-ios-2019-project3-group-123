@@ -99,6 +99,10 @@ class SwipableCard: UIView {
         
         recipe.loadImage(imageView: imageView)
         
+        recipe.getIngredients() { [weak self] ingredients in
+            print("Ingredients added")
+        }
+        
         title.text = recipe.title
         //index = recipe.index
     }
@@ -303,5 +307,4 @@ class SwipableCard: UIView {
         guard let recipe = recipe else { return }
         CoreDataManager.save(recipe)
     }
-
 }

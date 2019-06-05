@@ -39,10 +39,14 @@ class ExploreViewController: UIViewController {
             if let card = Bundle.main.loadNibNamed("SwipableCard", owner: self, options: nil)?.first as? SwipableCard {
                 view.addSubview(card)
                 card.resize()
-                //let id = SwipableCard.total - 1 - i
-                card.loadContent(recipe: recipes[i%recipes.count])
+
+                var recipeIndex = i%recipes.count
+                card.loadContent(recipe: recipes[recipeIndex])
+                
                 card.setIndex(index: i)
                 cards.append(card)
+                
+                recipes.remove(at: recipeIndex)
             }
         }
         for i in 0 ..< SwipableCard.total {
